@@ -4,24 +4,27 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>夜黑风高，小心闭包-Oh My Closures | CaveShao&#39;s blog</title>
+    <title>火狐不支持download属性吗 | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="本文参考链接1本文参考链接2王福朋本文参考链接3阮一峰本文参考链接4廖雪峰 接下来，您将看到以下内容：  javascript访局部，需要形成闭包 函数之中定义函数，立刻形成闭包 夜黑风高小心闭包，我在坑中凌乱">
-<meta name="keywords" content="闭包">
+    <meta name="description" content="今天看到一个头条的不错的头条视频，想保存下来却发现不能下载。于是用开发者工具找到播放器的地址打开，然后用鼠标右键的「视频另存为」将视频下载下来。这样做感觉还是有些麻烦，就有了开发做一个插件的想法。">
+<meta name="keywords" content="浏览器兼容">
 <meta property="og:type" content="article">
-<meta property="og:title" content="夜黑风高，小心闭包-Oh My Closures">
-<meta property="og:url" content="http://caveshao.com/2017/09/10/夜黑风高，小心闭包-Oh My Closures/index.html">
+<meta property="og:title" content="火狐不支持download属性吗">
+<meta property="og:url" content="http://caveshao.com/2018/04/12/火狐不支持-download-属性吗/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="本文参考链接1本文参考链接2王福朋本文参考链接3阮一峰本文参考链接4廖雪峰 接下来，您将看到以下内容：  javascript访局部，需要形成闭包 函数之中定义函数，立刻形成闭包 夜黑风高小心闭包，我在坑中凌乱">
-<meta property="og:updated_time" content="2017-09-10T11:14:23.024Z">
+<meta property="og:description" content="今天看到一个头条的不错的头条视频，想保存下来却发现不能下载。于是用开发者工具找到播放器的地址打开，然后用鼠标右键的「视频另存为」将视频下载下来。这样做感觉还是有些麻烦，就有了开发做一个插件的想法。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-262071f03c5e150d.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-670f8c9f487f22a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-04-12T10:20:29.404Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="夜黑风高，小心闭包-Oh My Closures">
-<meta name="twitter:description" content="本文参考链接1本文参考链接2王福朋本文参考链接3阮一峰本文参考链接4廖雪峰 接下来，您将看到以下内容：  javascript访局部，需要形成闭包 函数之中定义函数，立刻形成闭包 夜黑风高小心闭包，我在坑中凌乱">
+<meta name="twitter:title" content="火狐不支持download属性吗">
+<meta name="twitter:description" content="今天看到一个头条的不错的头条视频，想保存下来却发现不能下载。于是用开发者工具找到播放器的地址打开，然后用鼠标右键的「视频另存为」将视频下载下来。这样做感觉还是有些麻烦，就有了开发做一个插件的想法。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-262071f03c5e150d.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -81,14 +84,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/09/10/夜黑风高，小心闭包-Oh My Closures/" title="夜黑风高，小心闭包-Oh My Closures" itemprop="url">夜黑风高，小心闭包-Oh My Closures</a>
+      <a href="/2018/04/12/火狐不支持-download-属性吗/" title="火狐不支持download属性吗" itemprop="url">火狐不支持download属性吗</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2017-09-10T09:55:20.593Z" itemprop="datePublished"> 发表于 2017-09-10</time>
+    <time datetime="2018-04-12T10:11:09.462Z" itemprop="datePublished"> 发表于 2018-04-12</time>
     
   </p>
 </header>
@@ -97,104 +100,97 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#接下来，您将看到以下内容："><span class="toc-number">1.</span> <span class="toc-text">接下来，您将看到以下内容：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要用闭包"><span class="toc-number"></span> <span class="toc-text">为什么要用闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数之中定义函数，立刻形成闭包"><span class="toc-number"></span> <span class="toc-text">函数之中定义函数，立刻形成闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#月黑风高小心闭包，我在坑中凌乱"><span class="toc-number"></span> <span class="toc-text">月黑风高小心闭包，我在坑中凌乱</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425"><span class="toc-number"></span> <span class="toc-text">这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425</span></a>
+			
 		
 		</div>
 		
-		<p><a href="https://stackoverflow.com/questions/111102/how-do-javascript-closures-work" target="_blank" rel="external"><strong>本文参考链接1</strong></a><br><a href="http://www.cnblogs.com/wangfupeng1988/p/3977987.html" target="_blank" rel="external"><strong>本文参考链接2</strong>王福朋</a><br><a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" target="_blank" rel="external"><strong>本文参考链接3</strong>阮一峰</a><br><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143449934543461c9d5dfeeb848f5b72bd012e1113d15000" target="_blank" rel="external"><strong>本文参考链接4</strong>廖雪峰</a></p>
-<h5 id="接下来，您将看到以下内容："><a href="#接下来，您将看到以下内容：" class="headerlink" title="接下来，您将看到以下内容："></a>接下来，您将看到以下内容：</h5><blockquote>
-<ul>
-<li>javascript访局部，需要形成闭包</li>
-<li>函数之中定义函数，立刻形成闭包</li>
-<li>夜黑风高小心闭包，我在坑中凌乱</li>
-</ul>
-</blockquote>
+		<p>今天看到一个头条的不错的头条视频，想保存下来却发现不能下载。于是用开发者工具找到播放器的地址打开，然后用鼠标右键的「视频另存为」将视频下载下来。这样做感觉还是有些麻烦，就有了开发做一个插件的想法。</p>
 <a id="more"></a>
-<h2 id="为什么要用闭包"><a href="#为什么要用闭包" class="headerlink" title="为什么要用闭包"></a>为什么要用闭包</h2><p>事出必有因，存在即合理。凡事都要学会问为什么。与不会问为什么的人相比，经常问为什么的人会惊奇地发现，貌似什么都不懂了…………。嗯，这就是进步的开始。为什么要有闭包呢？我首先想到的原因是访问局部变量。看一下下面的代码：</p>
-<pre><code>var glo = &quot;closures&quot;;//全局变量
-function test() {
-    console.log(glo);
+<p><img src="https://upload-images.jianshu.io/upload_images/5816904-262071f03c5e150d.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="捕获.JPG"></p>
+<p>插件用油猴脚本开发，利用油猴脚本可以省去很多配置上的麻烦。像是下载视频这一种插件，如果想做的简单一点，几十行代码就可以了。我只是想下载今日头条的视频，所以也没有做的太复杂。核心功能的实现利用 html5 中的 a 标签，具体的做法是先添加 a<br>标签，然后把获取到的 video 元素的 src 属性赋值给 a 标签的 href 并设置 download 属性，最后触发 a 标签的点击事件。具体代码如下：</p>
+<pre><code>var a = document.createElement(&quot;a&quot;);
+a.href = url;
+a.download = fileName;
+a.id = &quot;downloadA&quot;;
+body.appendChild(a);
+document.querySelector(&quot;#downloadA&quot;).click();
+</code></pre><p>download 属性的作用是点击 a 标签指向的资源时，对资源进行下载而不是跳转页面浏览。下图是各浏览器对该属性的支持情况。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5816904-670f8c9f487f22a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>笔者使用火狐进行的测试，本以为很简单的东西却一直无法实现下载，只能跳转页面，完整的代码如下：</p>
+<pre><code>// ==UserScript==
+// @name     网页视频下载
+// @version  0.1
+// @description  通过替换获取视频地址接口的方式, 实现解除B站区域限制; 只对      HTML5播放器生效; 只支持番剧视频;
+// @author  caveshao
+// @include *://www.365yg.com/*
+// @include *://www.365yg.com/group/*
+// @include *://www.baidu.com/*
+// @grant    GM_addStyle
+// ==/UserScript==
+&apos;use strict&apos;;
+
+(function() {
+
+var button = document.createElement(&quot;button&quot;);
+button.id = &quot;downloadBtn&quot;;
+button.style.cssText = &quot;position:fixed;bottom:60px;right:90px;background-color:black;color:white;width:20px;height:20px;z-index:998;&quot;;
+
+var body = document.querySelector(&quot;body&quot;);
+body.style.position = &quot;relative&quot;;
+body.appendChild(button);
+
+var downloadTool = {
+    getFileName: function(url) {
+        var end = url.lastIndexOf(&quot;/&quot;);
+        var start = end - 10;
+        return url.substring(start, end);
+    },
+    downloadVideo: function(url, fileName) {
+      var content = &quot;file content!&quot;;
+            var data = new Blob([content], {
+                type: &quot;text/plain;charset=UTF-8&quot;
+            });
+
+        var a = document.createElement(&quot;a&quot;);
+        a.href = url;
+        a.download = fileName;
+        a.id = &quot;downloadA&quot;;
+        body.appendChild(a);
+        document.querySelector(&quot;#downloadA&quot;).click();
+
+      window.URL.revokeObjectURL(data);
+    }
 };
-test();
-</code></pre><p>运行上面的代码，输出结果应该为 closures 。glo 是全局变量，test 函数完全可以访问它。但如果是在函数外访问函数内的局部变量呢？就像下面的代码：</p>
-<pre><code>function test() {
-    var loc = &quot;closures&quot;;//局部变量
-}
-test();
-console.log(loc);
-</code></pre><p>这完全是行不通的。遇到上面这种情况的解决方法，就是创建一个闭包，类似于下面：</p>
-<pre><code>function test() {
-    var loc = &quot;closures&quot;;//局部变量
-    return function () {
-        console.log(loc);
-    }
-}
-test()();
-</code></pre><p>test() 返回一个函数，后面再加一个 () 让返回的函数立即执行。这是闭包最简单的形式，这样就可以在 test 函数的外面做到对其局部变量的输出了。在上面的代码中，内部函数引用了局部变量 ，内部函数作为返回值被在外部引用，所以外部就可以访问到局部变量。并且，局部变量会一直保存在内存中，下面的代码证明了这个现象：</p>
-<pre><code>function test() {
-    var x = 0;
-    return function() {
-        x++;
-        console.log(x);
-    }
-}
-var fn = test();
-fn();//输出 1
-fn();//输出 2
-</code></pre><p>如果 x 没有一直存在于内存，两次输出结果是相同的。 当然，应用闭包不仅仅只是访问局部变量，但我觉得这是闭包最根本的应用。</p>
-<h2 id="函数之中定义函数，立刻形成闭包"><a href="#函数之中定义函数，立刻形成闭包" class="headerlink" title="函数之中定义函数，立刻形成闭包"></a>函数之中定义函数，立刻形成闭包</h2><p>如果你在另一个函数中使用了 function 关键字，就会形成闭包。所以闭包这两个字看起来高大威猛，其实只要在一个函数内写一个函数，你就接触到它了。函数可以是匿名函数，也可以是不匿名的函数，但不可以是用 new function(……)。在上一节中出现了返回匿名函数形成闭包，下面的代码是另两种形成闭包的方式：</p>
-<pre><code>function test() {
-   var loc = 66;
-   function clo() {
-       console.log(loc);
-   }
-   return clo;
-}
 
-function test() {
-    var loc = 66;
-    var clo = function() {
-        console.log(loc);
+
+function main() {
+    var video = document.querySelector(&quot;video&quot;),
+        url = null,
+        name = &quot;video&quot;;
+
+    if (video) {
+        url = video.src;
     }
-    return clo;
-}
-</code></pre><h2 id="月黑风高小心闭包，我在坑中凌乱"><a href="#月黑风高小心闭包，我在坑中凌乱" class="headerlink" title="月黑风高小心闭包，我在坑中凌乱"></a>月黑风高小心闭包，我在坑中凌乱</h2><p>说起闭包的坑，有点「一把辛酸泪」的味道。姑且讨论几个闭包常见的坑：</p>
-<ol>
-<li>闭包的内存消耗大，如果过多使用闭包会影响网页的性能。</li>
-<li>循环中的闭包，循环中只形成一次闭包,就像下面的代码，虽然获取了多个 li ,但只会为一个添加点击事件。因为 i 不会在内存中消失，所以 i 只能有一个值，即最终值。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function test() &#123;</div><div class="line">    var lists = document.querySelect(&quot;li&quot;);</div><div class="line">    return function() &#123;</div><div class="line">      for(var i = 0; i &lt; 10; i++) &#123;</div><div class="line">          list[i].onclick = function() &#123;</div><div class="line">            </div><div class="line">          &#125;</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">    test()();</div></pre></td></tr></table></figure>
-<ol>
-<li>函数的每一次调用都会重新创建闭包：</li>
-</ol>
-<pre><code>function test() {
-  var x = 0;
-  return function() {
-    x++;
-    console.log(x);
+    document.querySelector(&quot;#downloadBtn&quot;).onclick = function() {
+         downloadTool.downloadVideo(url, downloadTool.getFileName(url));
     }
 }
 
-var fn = test();
-fn();//输出 1
-fn();//输出 2
-test()();//输出 1，因为闭包重新创建，所以局部变量的值被重置
-</code></pre><blockquote>
-<h4 id="这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425"><a href="#这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425" class="headerlink" title="这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425"></a>这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425</h4></blockquote>
+main();
+})();
+</code></pre><p>用 chrome 测试，发现没有问题，难道火狐不支持这个属性？我又把 download 的属性查了一下，发现火狐中 download 属性只适用于「同源的 URL」，目前似乎没有什么解决方案。如果有大佬知道解决方案，希望能在评论中指出。</p>
+<blockquote>
+<p>如果两个页面的协议，端口（如果有指定）和域名都相同，则两个页面具有相同的源。</p>
+</blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/javaScript/">javaScript</a>
-</div>
-
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/闭包/">闭包</a>
+  <span></span> <a href="/tags/浏览器兼容/">浏览器兼容</a>
   </div>
 
 </div>
@@ -203,7 +199,7 @@ test()();//输出 1，因为闭包重新创建，所以局部变量的值被重�
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2017/09/10/夜黑风高，小心闭包-Oh My Closures/" data-title="夜黑风高，小心闭包-Oh My Closures | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2018/04/12/火狐不支持-download-属性吗/" data-title="火狐不支持download属性吗 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -216,19 +212,11 @@ test()();//输出 1，因为闭包重新创建，所以局部变量的值被重�
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/09/28/Ajax-探寻/" title="Ajax 探寻">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Ajax 探寻</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/09/02/完全掌握弹性盒布局（一）属性大扫荡/"  title="完全掌握弹性盒布局（一）属性大扫荡">
+<a href="/2018/04/12/编程语言中，为什么-a-=-a-+-1/"  title="编程语言中，为什么 a = a - 1">
  <strong>下一篇：</strong><br/> 
- <span>完全掌握弹性盒布局（一）属性大扫荡
+ <span>编程语言中，为什么 a = a - 1
 </span>
 </a>
 </div>
@@ -243,7 +231,7 @@ test()();//输出 1，因为闭包重新创建，所以局部变量的值被重�
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#接下来，您将看到以下内容："><span class="toc-number">1.</span> <span class="toc-text">接下来，您将看到以下内容：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要用闭包"><span class="toc-number"></span> <span class="toc-text">为什么要用闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数之中定义函数，立刻形成闭包"><span class="toc-number"></span> <span class="toc-text">函数之中定义函数，立刻形成闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#月黑风高小心闭包，我在坑中凌乱"><span class="toc-number"></span> <span class="toc-text">月黑风高小心闭包，我在坑中凌乱</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425"><span class="toc-number"></span> <span class="toc-text">这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425</span></a>
+ 
  
   </div>
 

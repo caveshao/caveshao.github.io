@@ -4,24 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>夜黑风高，小心闭包-Oh My Closures | CaveShao&#39;s blog</title>
+    <title>编程语言中，为什么 a = a - 1 | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="本文参考链接1本文参考链接2王福朋本文参考链接3阮一峰本文参考链接4廖雪峰 接下来，您将看到以下内容：  javascript访局部，需要形成闭包 函数之中定义函数，立刻形成闭包 夜黑风高小心闭包，我在坑中凌乱">
-<meta name="keywords" content="闭包">
+    <meta name="description" content="一个从来没有接触过编程的人如果看到 a = a + 1 这样的算式，一定会感到奇怪。a 怎么能等于 a + 1 呢？这就像 1 等于 2 一样不可思议。">
+<meta name="keywords" content="技术历史">
 <meta property="og:type" content="article">
-<meta property="og:title" content="夜黑风高，小心闭包-Oh My Closures">
-<meta property="og:url" content="http://caveshao.com/2017/09/10/夜黑风高，小心闭包-Oh My Closures/index.html">
+<meta property="og:title" content="编程语言中，为什么 a = a - 1">
+<meta property="og:url" content="http://caveshao.com/2018/04/12/编程语言中，为什么-a-=-a-+-1/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="本文参考链接1本文参考链接2王福朋本文参考链接3阮一峰本文参考链接4廖雪峰 接下来，您将看到以下内容：  javascript访局部，需要形成闭包 函数之中定义函数，立刻形成闭包 夜黑风高小心闭包，我在坑中凌乱">
-<meta property="og:updated_time" content="2017-09-10T11:14:23.024Z">
+<meta property="og:description" content="一个从来没有接触过编程的人如果看到 a = a + 1 这样的算式，一定会感到奇怪。a 怎么能等于 a + 1 呢？这就像 1 等于 2 一样不可思议。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-c4656a2de64b6dfe.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-04-12T10:19:33.045Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="夜黑风高，小心闭包-Oh My Closures">
-<meta name="twitter:description" content="本文参考链接1本文参考链接2王福朋本文参考链接3阮一峰本文参考链接4廖雪峰 接下来，您将看到以下内容：  javascript访局部，需要形成闭包 函数之中定义函数，立刻形成闭包 夜黑风高小心闭包，我在坑中凌乱">
+<meta name="twitter:title" content="编程语言中，为什么 a = a - 1">
+<meta name="twitter:description" content="一个从来没有接触过编程的人如果看到 a = a + 1 这样的算式，一定会感到奇怪。a 怎么能等于 a + 1 呢？这就像 1 等于 2 一样不可思议。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-c4656a2de64b6dfe.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -81,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/09/10/夜黑风高，小心闭包-Oh My Closures/" title="夜黑风高，小心闭包-Oh My Closures" itemprop="url">夜黑风高，小心闭包-Oh My Closures</a>
+      <a href="/2018/04/12/编程语言中，为什么-a-=-a-+-1/" title="编程语言中，为什么 a = a - 1" itemprop="url">编程语言中，为什么 a = a - 1</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2017-09-10T09:55:20.593Z" itemprop="datePublished"> 发表于 2017-09-10</time>
+    <time datetime="2018-04-12T10:11:09.436Z" itemprop="datePublished"> 发表于 2018-04-12</time>
     
   </p>
 </header>
@@ -97,104 +99,25 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#接下来，您将看到以下内容："><span class="toc-number">1.</span> <span class="toc-text">接下来，您将看到以下内容：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要用闭包"><span class="toc-number"></span> <span class="toc-text">为什么要用闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数之中定义函数，立刻形成闭包"><span class="toc-number"></span> <span class="toc-text">函数之中定义函数，立刻形成闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#月黑风高小心闭包，我在坑中凌乱"><span class="toc-number"></span> <span class="toc-text">月黑风高小心闭包，我在坑中凌乱</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425"><span class="toc-number"></span> <span class="toc-text">这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425</span></a>
+			
 		
 		</div>
 		
-		<p><a href="https://stackoverflow.com/questions/111102/how-do-javascript-closures-work" target="_blank" rel="external"><strong>本文参考链接1</strong></a><br><a href="http://www.cnblogs.com/wangfupeng1988/p/3977987.html" target="_blank" rel="external"><strong>本文参考链接2</strong>王福朋</a><br><a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" target="_blank" rel="external"><strong>本文参考链接3</strong>阮一峰</a><br><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143449934543461c9d5dfeeb848f5b72bd012e1113d15000" target="_blank" rel="external"><strong>本文参考链接4</strong>廖雪峰</a></p>
-<h5 id="接下来，您将看到以下内容："><a href="#接下来，您将看到以下内容：" class="headerlink" title="接下来，您将看到以下内容："></a>接下来，您将看到以下内容：</h5><blockquote>
-<ul>
-<li>javascript访局部，需要形成闭包</li>
-<li>函数之中定义函数，立刻形成闭包</li>
-<li>夜黑风高小心闭包，我在坑中凌乱</li>
-</ul>
-</blockquote>
+		<p>一个从来没有接触过编程的人如果看到 a = a + 1 这样的算式，一定会感到奇怪。a 怎么能等于 a + 1 呢？这就像 1 等于 2 一样不可思议。</p>
 <a id="more"></a>
-<h2 id="为什么要用闭包"><a href="#为什么要用闭包" class="headerlink" title="为什么要用闭包"></a>为什么要用闭包</h2><p>事出必有因，存在即合理。凡事都要学会问为什么。与不会问为什么的人相比，经常问为什么的人会惊奇地发现，貌似什么都不懂了…………。嗯，这就是进步的开始。为什么要有闭包呢？我首先想到的原因是访问局部变量。看一下下面的代码：</p>
-<pre><code>var glo = &quot;closures&quot;;//全局变量
-function test() {
-    console.log(glo);
-};
-test();
-</code></pre><p>运行上面的代码，输出结果应该为 closures 。glo 是全局变量，test 函数完全可以访问它。但如果是在函数外访问函数内的局部变量呢？就像下面的代码：</p>
-<pre><code>function test() {
-    var loc = &quot;closures&quot;;//局部变量
-}
-test();
-console.log(loc);
-</code></pre><p>这完全是行不通的。遇到上面这种情况的解决方法，就是创建一个闭包，类似于下面：</p>
-<pre><code>function test() {
-    var loc = &quot;closures&quot;;//局部变量
-    return function () {
-        console.log(loc);
-    }
-}
-test()();
-</code></pre><p>test() 返回一个函数，后面再加一个 () 让返回的函数立即执行。这是闭包最简单的形式，这样就可以在 test 函数的外面做到对其局部变量的输出了。在上面的代码中，内部函数引用了局部变量 ，内部函数作为返回值被在外部引用，所以外部就可以访问到局部变量。并且，局部变量会一直保存在内存中，下面的代码证明了这个现象：</p>
-<pre><code>function test() {
-    var x = 0;
-    return function() {
-        x++;
-        console.log(x);
-    }
-}
-var fn = test();
-fn();//输出 1
-fn();//输出 2
-</code></pre><p>如果 x 没有一直存在于内存，两次输出结果是相同的。 当然，应用闭包不仅仅只是访问局部变量，但我觉得这是闭包最根本的应用。</p>
-<h2 id="函数之中定义函数，立刻形成闭包"><a href="#函数之中定义函数，立刻形成闭包" class="headerlink" title="函数之中定义函数，立刻形成闭包"></a>函数之中定义函数，立刻形成闭包</h2><p>如果你在另一个函数中使用了 function 关键字，就会形成闭包。所以闭包这两个字看起来高大威猛，其实只要在一个函数内写一个函数，你就接触到它了。函数可以是匿名函数，也可以是不匿名的函数，但不可以是用 new function(……)。在上一节中出现了返回匿名函数形成闭包，下面的代码是另两种形成闭包的方式：</p>
-<pre><code>function test() {
-   var loc = 66;
-   function clo() {
-       console.log(loc);
-   }
-   return clo;
-}
-
-function test() {
-    var loc = 66;
-    var clo = function() {
-        console.log(loc);
-    }
-    return clo;
-}
-</code></pre><h2 id="月黑风高小心闭包，我在坑中凌乱"><a href="#月黑风高小心闭包，我在坑中凌乱" class="headerlink" title="月黑风高小心闭包，我在坑中凌乱"></a>月黑风高小心闭包，我在坑中凌乱</h2><p>说起闭包的坑，有点「一把辛酸泪」的味道。姑且讨论几个闭包常见的坑：</p>
-<ol>
-<li>闭包的内存消耗大，如果过多使用闭包会影响网页的性能。</li>
-<li>循环中的闭包，循环中只形成一次闭包,就像下面的代码，虽然获取了多个 li ,但只会为一个添加点击事件。因为 i 不会在内存中消失，所以 i 只能有一个值，即最终值。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function test() &#123;</div><div class="line">    var lists = document.querySelect(&quot;li&quot;);</div><div class="line">    return function() &#123;</div><div class="line">      for(var i = 0; i &lt; 10; i++) &#123;</div><div class="line">          list[i].onclick = function() &#123;</div><div class="line">            </div><div class="line">          &#125;</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">    test()();</div></pre></td></tr></table></figure>
-<ol>
-<li>函数的每一次调用都会重新创建闭包：</li>
-</ol>
-<pre><code>function test() {
-  var x = 0;
-  return function() {
-    x++;
-    console.log(x);
-    }
-}
-
-var fn = test();
-fn();//输出 1
-fn();//输出 2
-test()();//输出 1，因为闭包重新创建，所以局部变量的值被重置
-</code></pre><blockquote>
-<h4 id="这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425"><a href="#这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425" class="headerlink" title="这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425"></a>这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425</h4></blockquote>
+<p>其实，这种代码的书写方式是由早期编程语言逐渐演变而来的。对于一个变量一般有三种操作，分别是初始化、值的重新分配与比较。举例来说， 「int a = 1」是初始化，「a = b」 是重新分配，「a == b」是比较。</p>
+<p>在早期编程语言中，一般这三个过程的操作符是不同的。比如说 LISP 中，let 用来初始化，set 用来分配值，equal 用来比较。</p>
+<p>BCPL 开始用 := 进行赋值和值的重新分配，用 = 来进行比较操作。后来 B 语言的创造者采用更为简单的 = 符号进行初始化和赋值操作，创建了 == 符号进行比较操作。其后的 C 语言及新产生的语言沿袭了这一用法。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5816904-c4656a2de64b6dfe.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Frida Bredesen  2017-07-19 07-40-27"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/javaScript/">javaScript</a>
-</div>
-
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/闭包/">闭包</a>
+  <span></span> <a href="/tags/技术历史/">技术历史</a>
   </div>
 
 </div>
@@ -203,7 +126,7 @@ test()();//输出 1，因为闭包重新创建，所以局部变量的值被重�
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2017/09/10/夜黑风高，小心闭包-Oh My Closures/" data-title="夜黑风高，小心闭包-Oh My Closures | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2018/04/12/编程语言中，为什么-a-=-a-+-1/" data-title="编程语言中，为什么 a = a - 1 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -217,18 +140,18 @@ test()();//输出 1，因为闭包重新创建，所以局部变量的值被重�
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/09/28/Ajax-探寻/" title="Ajax 探寻">
+ <a href="/2018/04/12/火狐不支持-download-属性吗/" title="火狐不支持download属性吗">
   <strong>上一篇：</strong><br/>
   <span>
-  Ajax 探寻</span>
+  火狐不支持download属性吗</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/09/02/完全掌握弹性盒布局（一）属性大扫荡/"  title="完全掌握弹性盒布局（一）属性大扫荡">
+<a href="/2017/11/11/进程与线程/"  title="进程与线程">
  <strong>下一篇：</strong><br/> 
- <span>完全掌握弹性盒布局（一）属性大扫荡
+ <span>进程与线程
 </span>
 </a>
 </div>
@@ -243,7 +166,7 @@ test()();//输出 1，因为闭包重新创建，所以局部变量的值被重�
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#接下来，您将看到以下内容："><span class="toc-number">1.</span> <span class="toc-text">接下来，您将看到以下内容：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要用闭包"><span class="toc-number"></span> <span class="toc-text">为什么要用闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数之中定义函数，立刻形成闭包"><span class="toc-number"></span> <span class="toc-text">函数之中定义函数，立刻形成闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#月黑风高小心闭包，我在坑中凌乱"><span class="toc-number"></span> <span class="toc-text">月黑风高小心闭包，我在坑中凌乱</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425"><span class="toc-number"></span> <span class="toc-text">这篇文章只是个人浅显的总结，不对的地方希望大家指正。技术交流QQ群：669826425</span></a>
+ 
  
   </div>
 
