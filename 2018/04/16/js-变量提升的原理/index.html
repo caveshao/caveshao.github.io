@@ -4,28 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>windows 中 MongoDB 的配置及使用方法 | CaveShao&#39;s blog</title>
+    <title>js 变量提升的原理 | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="1.下载：打开网址 下载链接，选择 community server 进行下载。如果想要下载之前的版本，可以先点击下载选择框中右上角的 previous Release ，然后再下载。">
-<meta name="keywords" content="MongoDB">
+    <meta name="description" content="众所周知，JavaScript 中存在变量提升的问题，在 ES6 引入的新关键词 let 可以很方便的解决这个问题，不过这篇文章的目的不是解决变量提升的问题，而是讨论为什么会有变量提升这种现象。">
+<meta name="keywords" content="原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="windows 中 MongoDB 的配置及使用方法">
-<meta property="og:url" content="http://caveshao.com/2018/04/15/windows-中-MongoDB-配置及使用方法/index.html">
+<meta property="og:title" content="js 变量提升的原理">
+<meta property="og:url" content="http://caveshao.com/2018/04/16/js-变量提升的原理/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="1.下载：打开网址 下载链接，选择 community server 进行下载。如果想要下载之前的版本，可以先点击下载选择框中右上角的 previous Release ，然后再下载。">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-aae23e15a228762f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-8c5b02994cce0a14.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-aed56e63fa13f7f9.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-04-15T00:21:08.707Z">
+<meta property="og:description" content="众所周知，JavaScript 中存在变量提升的问题，在 ES6 引入的新关键词 let 可以很方便的解决这个问题，不过这篇文章的目的不是解决变量提升的问题，而是讨论为什么会有变量提升这种现象。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-b407dd6cfa508846.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-04-16T13:33:34.407Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="windows 中 MongoDB 的配置及使用方法">
-<meta name="twitter:description" content="1.下载：打开网址 下载链接，选择 community server 进行下载。如果想要下载之前的版本，可以先点击下载选择框中右上角的 previous Release ，然后再下载。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-aae23e15a228762f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="js 变量提升的原理">
+<meta name="twitter:description" content="众所周知，JavaScript 中存在变量提升的问题，在 ES6 引入的新关键词 let 可以很方便的解决这个问题，不过这篇文章的目的不是解决变量提升的问题，而是讨论为什么会有变量提升这种现象。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-b407dd6cfa508846.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -85,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/04/15/windows-中-MongoDB-配置及使用方法/" title="windows 中 MongoDB 的配置及使用方法" itemprop="url">windows 中 MongoDB 的配置及使用方法</a>
+      <a href="/2018/04/16/js-变量提升的原理/" title="js 变量提升的原理" itemprop="url">js 变量提升的原理</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2018-04-15T00:18:34.199Z" itemprop="datePublished"> 发表于 2018-04-15</time>
+    <time datetime="2018-04-16T13:31:22.444Z" itemprop="datePublished"> 发表于 2018-04-16</time>
     
   </p>
 </header>
@@ -101,31 +99,23 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载："><span class="toc-number">1.</span> <span class="toc-text">1.下载：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-安装："><span class="toc-number">2.</span> <span class="toc-text">2.安装：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-服务添加至-windows"><span class="toc-number">3.</span> <span class="toc-text">3.服务添加至 windows</span></a></li></ol>
+			
 		
 		</div>
 		
-		<h3 id="1-下载："><a href="#1-下载：" class="headerlink" title="1.下载："></a>1.下载：</h3><p>打开网址 <a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank" rel="external">下载链接</a>，选择 community server 进行下载。如果想要下载之前的版本，可以先点击下载选择框中右上角的 previous Release ，然后再下载。</p>
-<p><a id="more"></a><img src="https://upload-images.jianshu.io/upload_images/5816904-aae23e15a228762f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mongodb"></p>
-<h3 id="2-安装："><a href="#2-安装：" class="headerlink" title="2.安装："></a>2.安装：</h3><p>安装过程有如下画面，选哪一个都可以。第一个是默认配置，另一个是自己配置。<br><img src="https://upload-images.jianshu.io/upload_images/5816904-8c5b02994cce0a14.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装"></p>
-<h3 id="3-服务添加至-windows"><a href="#3-服务添加至-windows" class="headerlink" title="3.服务添加至 windows"></a>3.服务添加至 windows</h3><p>安装结束后最好将服务添加至 windows，这样启动更加方便。</p>
-<ol>
-<li>首先新建一个 mongo.config 文件，防止安装目录的根目录下。<br><img src="https://upload-images.jianshu.io/upload_images/5816904-aed56e63fa13f7f9.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="捕获1.PNG"></li>
-<li><p>然后用记事本（或其他软件）打开文件，编辑内容如下：</p>
-<pre><code>dbpath=你的安装目录\data\db
-logpath=你的安装目录\log\mongo.log
-port=27017
-</code></pre><p>注意，上方路径中的文件与文件夹是不存在的，需要自己先创建。port 是端口号。</p>
-</li>
-<li><p>用命令行打开 bin 目录，输入</p>
-<pre><code>mongod.exe  --config  mongo.config文件的绝对路径  --install
-</code></pre></li>
-<li><p>最后，任意时刻打开命令行，输入：</p>
-<pre><code>net start MongoDB
-net stop MongoDB
-</code></pre><p>就可以开启或关闭 MongoDB 了。</p>
-</li>
-</ol>
+		<p>众所周知，JavaScript 中存在变量提升的问题，在 ES6 引入的新关键词 let 可以很方便的解决这个问题，不过这篇文章的目的不是解决变量提升的问题，而是讨论为什么会有变量提升这种现象。</p>
+<a id="more"></a>
+<p>以前对这个问题根本没有想过，在看了 《你不知道的 js 》这本书后，才开始考虑并且明白了其中的原因。</p>
+<p>变量提升的根本原因是变量声明与赋值的分离，举个例子 var a = 2；这个代码是分两步进行的。首先是 var a 这一部分的变量声明，这个过程是在代码编译时进行的。然后是 a = 2; 这一部分的变量赋值，这个过程是在代码执行时进行的。</p>
+<p>代码先编译一遍然后才执行，这样下面的变量提升的代码就容易解释了。</p>
+<pre><code>console.log(a)
+var a = 2;
+
+b = 3;
+var b;
+console.log(b)
+</code></pre><p>在这段代码编译的过程中，a 与 b 都进行了声明，代码执行的过程中先打印 a ,因为 a 只是声明了还没有赋值，所以结果是 undefined。后打印 b ，因为 b 的赋值在打印的前面，所以结果是 2.</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5816904-b407dd6cfa508846.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="code"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -133,13 +123,13 @@ net stop MongoDB
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/数据库/">数据库</a>
+  <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/MongoDB/">MongoDB</a>
+  <span></span> <a href="/tags/原理/">原理</a>
   </div>
 
 </div>
@@ -148,7 +138,7 @@ net stop MongoDB
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2018/04/15/windows-中-MongoDB-配置及使用方法/" data-title="windows 中 MongoDB 的配置及使用方法 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2018/04/16/js-变量提升的原理/" data-title="js 变量提升的原理 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -161,19 +151,11 @@ net stop MongoDB
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/04/16/js-变量提升的原理/" title="js 变量提升的原理">
-  <strong>上一篇：</strong><br/>
-  <span>
-  js 变量提升的原理</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/04/13/孙悟空的棒和箍/"  title="孙悟空的棒和箍">
+<a href="/2018/04/15/windows-中-MongoDB-配置及使用方法/"  title="windows 中 MongoDB 的配置及使用方法">
  <strong>下一篇：</strong><br/> 
- <span>孙悟空的棒和箍
+ <span>windows 中 MongoDB 的配置及使用方法
 </span>
 </a>
 </div>
@@ -188,7 +170,7 @@ net stop MongoDB
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载："><span class="toc-number">1.</span> <span class="toc-text">1.下载：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-安装："><span class="toc-number">2.</span> <span class="toc-text">2.安装：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-服务添加至-windows"><span class="toc-number">3.</span> <span class="toc-text">3.服务添加至 windows</span></a></li></ol>
+ 
  
   </div>
 
