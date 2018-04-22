@@ -4,23 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>先到为君，后到为臣 | CaveShao&#39;s blog</title>
+    <title>node单线程异步和事件轮询 | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="前端成长记录 个人生活感悟 html CSS javascript">
+    <meta name="description" content="首先解释一下单线程这个概念，顾名思义就是在一条线上运行。也就是说引擎对于 js 文件从头到尾依次执行，通常所说的同步就是这个意思。那么，异步是什么意思？">
+<meta name="keywords" content="node">
 <meta property="og:type" content="article">
-<meta property="og:title" content="先到为君，后到为臣">
-<meta property="og:url" content="http://caveshao.com/2017/07/09/先到为君，后到为臣/index.html">
+<meta property="og:title" content="node单线程异步和事件轮询">
+<meta property="og:url" content="http://caveshao.com/2018/04/22/nodejs单线程异步和事件轮询/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="前端成长记录 个人生活感悟 html CSS javascript">
-<meta property="og:updated_time" content="2017-07-09T08:43:43.703Z">
+<meta property="og:description" content="首先解释一下单线程这个概念，顾名思义就是在一条线上运行。也就是说引擎对于 js 文件从头到尾依次执行，通常所说的同步就是这个意思。那么，异步是什么意思？">
+<meta property="og:updated_time" content="2018-04-22T11:57:49.469Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="先到为君，后到为臣">
-<meta name="twitter:description" content="前端成长记录 个人生活感悟 html CSS javascript">
+<meta name="twitter:title" content="node单线程异步和事件轮询">
+<meta name="twitter:description" content="首先解释一下单线程这个概念，顾名思义就是在一条线上运行。也就是说引擎对于 js 文件从头到尾依次执行，通常所说的同步就是这个意思。那么，异步是什么意思？">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -80,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/07/09/先到为君，后到为臣/" title="先到为君，后到为臣" itemprop="url">先到为君，后到为臣</a>
+      <a href="/2018/04/22/nodejs单线程异步和事件轮询/" title="node单线程异步和事件轮询" itemprop="url">node单线程异步和事件轮询</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2017-07-09T08:43:43.000Z" itemprop="datePublished"> 发表于 2017-07-09</time>
+    <time datetime="2018-04-22T11:48:27.815Z" itemprop="datePublished"> 发表于 2018-04-22</time>
     
   </p>
 </header>
@@ -100,11 +101,28 @@
 		
 		</div>
 		
-		  
+		<p>首先解释一下单线程这个概念，顾名思义就是在一条线上运行。也就是说引擎对于 js 文件从头到尾依次执行，通常所说的同步就是这个意思。那么，异步是什么意思？</p>
+<a id="more"></a>
+<p>要解释异步首先看一下下方的代码：</p>
+<pre><code>request.get(&quot;www.xxx.com:8080/articles&quot;,function() {})
+</code></pre><p>在这段代码中，有一个匿名 function，这个函数被称为回调函数。在解析 js 时这个函数是不会被立即执行的，只有对服务器的请求完成后这个函数才会被执行。既然这个函数不会被立即执行，那么这个函数及其所在的一段代码就是异步的。单线程异步简单来说就是这种机制。</p>
+<p>js 是单线程的，但引擎不是，在引擎中有一个线程叫做「事件触发线程」。这个线程是配合引擎的 js 线程实现 js 异步的。当引擎执行 js 遇到异步的方法时，会将回调函数交给事件触发线程。以上方的代码为例，回调函数交给事件触发程序后，当对服务器的请求完成，事件触发程序会将回调函数添加到它所管理的事件队列中。</p>
+<p>这个事件队列会一直等到同步的 js 执行完，添加到执行栈中接着执行。由于事件被触发的条件不同，事件队列会不断更新。js 线程中执行栈为空后就会一直查询事件队列，如果有新被触发的事件就添加到执行栈中执行。这个机制称为事件轮询。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/前端/">前端</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/node/">node</a>
+  </div>
 
 </div>
 
@@ -112,7 +130,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2017/07/09/先到为君，后到为臣/" data-title="先到为君，后到为臣 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2018/04/22/nodejs单线程异步和事件轮询/" data-title="node单线程异步和事件轮询 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -125,14 +143,14 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/09/02/完全掌握弹性盒布局（一）属性大扫荡/" title="完全掌握弹性盒布局（一）属性大扫荡">
-  <strong>上一篇：</strong><br/>
-  <span>
-  完全掌握弹性盒布局（一）属性大扫荡</span>
+
+<div class="next">
+<a href="/2018/04/21/js-严格模式下，为什么不能给未声明变量赋值/"  title="js-严格模式下，为什么不能给未声明变量赋值">
+ <strong>下一篇：</strong><br/> 
+ <span>js-严格模式下，为什么不能给未声明变量赋值
+</span>
 </a>
 </div>
-
 
 </nav>
 
