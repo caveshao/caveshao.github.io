@@ -4,26 +4,25 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>简化版 http 请求全过程 | CaveShao&#39;s blog</title>
+    <title>CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="当我们在浏览器中输入 http://www.caveshao.com 并回车，会依次发生以下过程:**  首先我们会根据 DNS 协议将 www.caveshao.com 变为一个 IP 地址。 这个过程会分为两小步：首先查询本地的 host 文件，如果 host 文件中存储了这个网址对应的 IP，则不必进行第二步。如果 host 文件中没有存储该网址对应的 IP，计算机会通过 53 端口向 DN">
-<meta name="keywords" content="http">
+    <meta name="description" content="title:  【翻译】GitHub 光明未来 categories:  翻译 作者: defunkt ,GitHub CEO &amp;amp; 联合创始人=&amp;gt; 点击看原文 &amp;lt;=  我很高兴宣布，微软正在收购 GitHub，预计协议将在年底前完成。我们想尽快分享这条消息，尽管离完全结束还需要几个月。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简化版 http 请求全过程">
-<meta property="og:url" content="http://caveshao.com/2018/04/18/简化版 http 请求全过程/index.html">
+<meta property="og:title" content="CaveShao&#39;s blog">
+<meta property="og:url" content="http://caveshao.com/2018/06/06/【翻译】GitHub-的光明未来/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="当我们在浏览器中输入 http://www.caveshao.com 并回车，会依次发生以下过程:**  首先我们会根据 DNS 协议将 www.caveshao.com 变为一个 IP 地址。 这个过程会分为两小步：首先查询本地的 host 文件，如果 host 文件中存储了这个网址对应的 IP，则不必进行第二步。如果 host 文件中没有存储该网址对应的 IP，计算机会通过 53 端口向 DN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-c2a7ecaff3905f5d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-04-18T11:34:12.587Z">
+<meta property="og:description" content="title:  【翻译】GitHub 光明未来 categories:  翻译 作者: defunkt ,GitHub CEO &amp;amp; 联合创始人=&amp;gt; 点击看原文 &amp;lt;=  我很高兴宣布，微软正在收购 GitHub，预计协议将在年底前完成。我们想尽快分享这条消息，尽管离完全结束还需要几个月。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-6bb9f5b2a1bcf524.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-06-06T11:53:24.710Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简化版 http 请求全过程">
-<meta name="twitter:description" content="当我们在浏览器中输入 http://www.caveshao.com 并回车，会依次发生以下过程:**  首先我们会根据 DNS 协议将 www.caveshao.com 变为一个 IP 地址。 这个过程会分为两小步：首先查询本地的 host 文件，如果 host 文件中存储了这个网址对应的 IP，则不必进行第二步。如果 host 文件中没有存储该网址对应的 IP，计算机会通过 53 端口向 DN">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-c2a7ecaff3905f5d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="CaveShao&#39;s blog">
+<meta name="twitter:description" content="title:  【翻译】GitHub 光明未来 categories:  翻译 作者: defunkt ,GitHub CEO &amp;amp; 联合创始人=&amp;gt; 点击看原文 &amp;lt;=  我很高兴宣布，微软正在收购 GitHub，预计协议将在年底前完成。我们想尽快分享这条消息，尽管离完全结束还需要几个月。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-6bb9f5b2a1bcf524.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -83,14 +82,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/04/18/简化版 http 请求全过程/" title="简化版 http 请求全过程" itemprop="url">简化版 http 请求全过程</a>
+      <a href="/2018/06/06/【翻译】GitHub-的光明未来/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2018-04-18T11:31:18.744Z" itemprop="datePublished"> 发表于 2018-04-18</time>
+    <time datetime="2018-06-06T11:51:00.147Z" itemprop="datePublished"> 发表于 2018-06-06</time>
     
   </p>
 </header>
@@ -103,32 +102,31 @@
 		
 		</div>
 		
-		<p>当我们在浏览器中输入 <a href="http://www.caveshao.com" target="_blank" rel="external">http://www.caveshao.com</a> 并回车，会依次发生以下过程:**</p>
-<ol>
-<li><strong>首先我们会根据 DNS 协议将 www.caveshao.com 变为一个 IP 地址。</strong> 这个过程会分为两小步：首先查询本地的 host 文件，如果 host 文件中存储了这个网址对应的 IP，则不必进行第二步。如果 host 文件中没有存储该网址对应的 IP，计算机会通过 53 端口向 DNS 服务器发送一个 DNS 数据包，然后 DNS 服务器返回需要请求网址的 IP 地址。计算机此时会存储该网址的 IP 地址到 host 文件，这样下一次访问该网址时只需进行第一步就可以找到 IP 地址。至于 DNS 服务器的地址是什么，计算机可以遵循一套规则动态获取，也可以自己在计算机内设置一个静态的 DNS 服务器地址。 <a id="more"></a></li>
-<li><strong>第二步，由于我们发送的是一个 http 网页请求，所以我们会根据 http 协议构造一个 http 数据包。</strong>数据包是逐渐向外扩充的，下方的每一个数据包都包含上一个数据包。</li>
-<li><strong>第三步，根据 TCP 协议，构造 TCP 数据包。</strong> 此过程中需要设置本机的端口与接收方的端口。由于是 http 请求，接收方的端口默认是 80。本机的端口是一个大于 1024 的合理整型数。TCP 数据包包含 http 数据包。端口代表着主机的一个运行程序的进程。</li>
-<li><strong>第四步，构造 IP 数据包，获取请求网址的 MAC 地址。</strong>构造 IP 数据包时，需要设置本机与所要请求的网址的 IP 地址，这两项此时都是已知的。获取 www.caveshao.com 的 MAC 地址前，需要通过本机的子网掩码对本机 IP 及接受方的 IP 分别进行二进制的 AND 运算。如果结果相等，证明两个 IP 在同一子网，根据 ARP 协议由本机向子网内所有主机机发送一个数据包。该数据包包括接受方的 IP，子网内所有主机在接到数据包后将本机 IP 与数据包内的 IP 比对。如果相等就会返回 MAC 地址给发送方。如果结果不相等，证明两个 IP 不在同一个子网，这是就会获取网关的的 MAC 地址。网关的 IP 地址是事先在本地设置好的。</li>
-<li><strong>第五步，构造以太网数据包，发送数据。</strong>根据以太网协议，设置发送方的 MAC 地址与接收方的 MAC 地址。如果发送方与接收方在同一网络内，发送方会向网络内所有主机发送数据包。各主机会将自己的 MAC 地址拿出来比对，如果与数据包的接收方的 MAC 地址一样，就会解析数据包主体。如果发送方与接收方不在同一子网内，数据包会发送至网关，由网关转发至接收方所在子网的网关，最后发送至接收方。</li>
-<li><strong>接收方，接收解析数据包。</strong>接收方在收到数据包后，用与发送数据相反的顺序，像剥洋葱一样取出 http 数据包，读出 http 请求，最后发送 http 响应。响应数据包的发送方式与请求的相同。</li>
-</ol>
-<p>如果觉得文章有帮助，请点个喜欢支持一下。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5816904-c2a7ecaff3905f5d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Jf Brou  2017-09-01 03-41-52"></p>
+		<blockquote>
+<p>title:  【翻译】GitHub 光明未来</p>
+<p>categories:  翻译</p>
+<p>作者: <strong><a href="https://github.com/defunkt" target="_blank" rel="external">defunkt</a></strong> ,GitHub CEO &amp; 联合创始人<br><a href="https://blog.github.com/2018-06-04-github-microsoft/" target="_blank" rel="external">=&gt; 点击看原文 &lt;=</a></p>
+</blockquote>
+<p>我很高兴宣布，微软正在收购 GitHub，预计协议将在年底前完成。我们想尽快分享这条消息，尽管离完全结束还需要几个月。</p>
+<a id="more"></a>
+<p>当十年前 GitHub 首次推出时，我从未想过这个头条新闻。Git 是一个功能强大但是利基的工具，就像云只是天空中的东西，而微软是一个非常不同的公司。当时的人说，开源与商业混合起来就像石油与水。</p>
+<p>我们不同意这个观点。作为开发者，我们知道这是一个错误的二分法——长期以来我们在商业环境中成功地使用了开源软件。我们需要的是更简单的与他人合作的方式，不管代码是私人的、公开的或者介于两者之间。 我们想用 Git 来做这件事，我们想要世界上的其他人能够加入进来，并且我们不希望它花费一毛钱，倘若它是开源的。因此我们创建了 GitHub。</p>
+<p>当然，现在许多事不同了。Git 是最受欢迎的版本管理系统，云主要是电脑，微软是全球最活跃的 GitHub 组织。微软的 vscode 项目被数以百万计的开发者喜爱，这个项目记住 GitHub 的平台构建且完全开源。除此之外，现在主要的企业普遍拥抱开源。世界已经意识到高效、快乐开发人员的重要性。同样，人们现在都拥有智能手机。</p>
+<p>然而，没变的是我们对开发者的关注。从一开始，我们着迷于为使用它的人们创造一个产品。我们想让开发者更加高效，我们想让更多的人成为开发者。从“云编程与边缘编程”，GitHub 的任务是不管经验水平帮助每一个开发者有效的学习、编程构造软件。</p>
+<p>因此，当我们展望未来十年及其后的软件开发，我们知道这些都与开发者有关。我们了解了他们的主意，正如在过去几年时间通过 Git LFS 到 Electron 项目的合作了解了微软这个团队一样。他们在开源领域的工作激励了我们，我的世界与领英的成功收购向我们展示了他们非常重视新业务，Azure 的发展证明了他们是一个创新的开发平台。</p>
+<p>但不止如此，他们对未来的远景与我们的愿景紧密相关。我们都认为 GitHub 需要为所有开发人员保持一个开放的平台。无论你的语言，技术栈，平台，云，或许可如何，GitHub 将永远是你创造软件，合作，造轮子最好的地方。</p>
+<p>我们都认为软件开发需要更轻松，更易用，更智能，更开放，所以更多的人可以成为开发者而已存的开发者可以话更多的时间关注他们尝试解决的独一无二的问题。</p>
+<p>我们都看到开发者的需求日益增长以及软件在我们生活的方方面面扮演者越来越重要的角色。</p>
+<p>并且，更重要的是，我们都相信我们可以在一起做更重要的事。毕竟，合作是我们做的每件事的核心。</p>
+<p>作为这次改变的一部分，纳特·弗里曼将会担任 GitHub 的 CEO。我们花了一些时间寻找新的 CEO，找到了微软和纳特，我们相信在未来几年 GitHub 的社区和公司将会更加强大。纳特合伙创办了  Xamarin 并且多年间一直致力于许多开源项目，有许多软件与开源软件社区的经验，是继续提高开发者环境、帮助 GitHub 成长最合适的人。</p>
+<p>对于我来说，我将在微软担任与纳特和团队工作接近的新角色，未来我会分享更多细节。</p>
+<p>我为我们团队和 GitHub 在过去十年间完成的事感到感到自豪，我迫不及待地想看看未来会发生什么。软件开发的未来是光明的，我很高兴能与微软联手实现这一目标。</p>
+<p><strong><a href="https://github.com/defunkt" target="_blank" rel="external">@defunkt</a></strong><br>CEO &amp; 联合创始人  ,GitHub<br><img src="https://upload-images.jianshu.io/upload_images/5816904-6bb9f5b2a1bcf524.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alexey Ruban  2016-06-02 07-27-15"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/互联网协议/">互联网协议</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/http/">http</a>
-  </div>
 
 </div>
 
@@ -136,7 +134,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2018/04/18/简化版 http 请求全过程/" data-title="简化版 http 请求全过程 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2018/06/06/【翻译】GitHub-的光明未来/" data-title="CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -149,19 +147,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/04/19/《增广贤文》千年的智慧/" title="《增广贤文》千年的智慧">
-  <strong>上一篇：</strong><br/>
-  <span>
-  《增广贤文》千年的智慧</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/04/17/express-实现跨域/"  title="express 实现跨域">
+<a href="/2018/06/04/vue 的异步组件与路由懒加载/"  title="vue 的异步组件与路由懒加载">
  <strong>下一篇：</strong><br/> 
- <span>express 实现跨域
+ <span>vue 的异步组件与路由懒加载
 </span>
 </a>
 </div>
