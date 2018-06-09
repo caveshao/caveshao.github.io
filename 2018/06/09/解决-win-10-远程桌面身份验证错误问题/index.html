@@ -4,26 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>js 变量提升的原理 | CaveShao&#39;s blog</title>
+    <title>win10 远程桌面验证错误 | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="众所周知，JavaScript 中存在变量提升的问题，在 ES6 引入的新关键词 let 可以很方便的解决这个问题，不过这篇文章的目的不是解决变量提升的问题，而是讨论为什么会有变量提升这种现象。">
-<meta name="keywords" content="原理">
+    <meta name="description" content="win10 更新后在使用远程桌面功能后会出现如下名叫身份验证错误的提示：这是远程桌面相关的补丁更新造成的，不同的 windows 版本需要用到不同的方法解决这个问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js 变量提升的原理">
-<meta property="og:url" content="http://caveshao.com/2018/04/16/js-变量提升的原理/index.html">
+<meta property="og:title" content="win10 远程桌面验证错误">
+<meta property="og:url" content="http://caveshao.com/2018/06/09/解决-win-10-远程桌面身份验证错误问题/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="众所周知，JavaScript 中存在变量提升的问题，在 ES6 引入的新关键词 let 可以很方便的解决这个问题，不过这篇文章的目的不是解决变量提升的问题，而是讨论为什么会有变量提升这种现象。">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-b407dd6cfa508846.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-04-16T13:33:34.407Z">
+<meta property="og:description" content="win10 更新后在使用远程桌面功能后会出现如下名叫身份验证错误的提示：这是远程桌面相关的补丁更新造成的，不同的 windows 版本需要用到不同的方法解决这个问题。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-567bfd4859c91e8d.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-0a812459770a2317.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-06-09T14:00:42.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js 变量提升的原理">
-<meta name="twitter:description" content="众所周知，JavaScript 中存在变量提升的问题，在 ES6 引入的新关键词 let 可以很方便的解决这个问题，不过这篇文章的目的不是解决变量提升的问题，而是讨论为什么会有变量提升这种现象。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-b407dd6cfa508846.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="win10 远程桌面验证错误">
+<meta name="twitter:description" content="win10 更新后在使用远程桌面功能后会出现如下名叫身份验证错误的提示：这是远程桌面相关的补丁更新造成的，不同的 windows 版本需要用到不同的方法解决这个问题。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-567bfd4859c91e8d.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -83,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/04/16/js-变量提升的原理/" title="js 变量提升的原理" itemprop="url">js 变量提升的原理</a>
+      <a href="/2018/06/09/解决-win-10-远程桌面身份验证错误问题/" title="win10 远程桌面验证错误" itemprop="url">win10 远程桌面验证错误</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2018-04-16T13:31:22.444Z" itemprop="datePublished"> 发表于 2018-04-16</time>
+    <time datetime="2018-06-09T13:59:10.542Z" itemprop="datePublished"> 发表于 2018-06-09</time>
     
   </p>
 </header>
@@ -103,19 +103,10 @@
 		
 		</div>
 		
-		<p>众所周知，JavaScript 中存在变量提升的问题，在 ES6 引入的新关键词 let 可以很方便的解决这个问题，不过这篇文章的目的不是解决变量提升的问题，而是讨论为什么会有变量提升这种现象。</p>
+		<p>win10 更新后在使用远程桌面功能后会出现如下名叫身份验证错误的提示：<br><img src="https://upload-images.jianshu.io/upload_images/5816904-567bfd4859c91e8d.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这是远程桌面相关的补丁更新造成的，不同的 windows 版本需要用到不同的方法解决这个问题。</p>
 <a id="more"></a>
-<p>以前对这个问题根本没有想过，在看了 《你不知道的 js 》这本书后，才开始考虑并且明白了其中的原因。</p>
-<p>变量提升的根本原因是变量声明与赋值的分离，举个例子 var a = 2；这个代码是分两步进行的。首先是 var a 这一部分的变量声明，这个过程是在代码编译时进行的。然后是 a = 2; 这一部分的变量赋值，这个过程是在代码执行时进行的。</p>
-<p>代码先编译一遍然后才执行，这样下面的变量提升的代码就容易解释了。</p>
-<pre><code>console.log(a)
-var a = 2;
-
-b = 3;
-var b;
-console.log(b)
-</code></pre><p>在这段代码编译的过程中，a 与 b 都进行了声明，代码执行的过程中先打印 a ,因为 a 只是声明了还没有赋值，所以结果是 undefined。后打印 b ，因为 b 的赋值在打印的前面，所以结果是 2.</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5816904-b407dd6cfa508846.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="code"></p>
+<p>对于 windows 专业版，可以直接修改 CredSSP 加密 Oracle 修正，具体步骤是 <strong>win+r -&gt; 运行 gepdit.msc -&gt; 计算机配置 -&gt; 管理模板 -&gt; 系统 -&gt; 凭据分配 -&gt; 加密Oracle修正 -&gt; 上栏选择启用，下栏选择易受攻击 -&gt; 应用（若无效则重启计算机)</strong></p>
+<p>在 windows 家庭版中，无法运行 gepdit.msc，可以用修改注册表的方法解决这个问题  <strong>win+r<br>-&gt; 运行 regedit 打开注册表编辑器<br> -&gt; 找到目录：计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\<br>-&gt; System 上右键新建项，名称 CredSSP<br>-&gt; 在 CredSSP 上新建项，名称 Parameters<br>-&gt; 在 Parameters 上新建 DWORD(32) ，名称AllowEncryptionOracle<br>-&gt; 双击 AllowEncryptionOracle 设置值为 2 十六进制</strong><br>设置成功后，远程桌面就不会报错了，如果没有效果重启电脑试一下。<br><img src="https://upload-images.jianshu.io/upload_images/5816904-0a812459770a2317.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="win"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -123,14 +114,9 @@ console.log(b)
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  <a class="article-category-link" href="/categories/windows-常见问题/">windows 常见问题</a>
 </div>
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/原理/">原理</a>
-  </div>
 
 </div>
 
@@ -138,7 +124,7 @@ console.log(b)
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2018/04/16/js-变量提升的原理/" data-title="js 变量提升的原理 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2018/06/09/解决-win-10-远程桌面身份验证错误问题/" data-title="win10 远程桌面验证错误 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -151,19 +137,11 @@ console.log(b)
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/04/17/express-实现跨域/" title="express 实现跨域">
-  <strong>上一篇：</strong><br/>
-  <span>
-  express 实现跨域</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/04/15/windows-中-MongoDB-配置及使用方法/"  title="windows 中 MongoDB 的配置及使用方法">
+<a href="/2018/06/06/【翻译】GitHub-的光明未来/"  title="【翻译】GitHub 的光明未来">
  <strong>下一篇：</strong><br/> 
- <span>windows 中 MongoDB 的配置及使用方法
+ <span>【翻译】GitHub 的光明未来
 </span>
 </a>
 </div>
