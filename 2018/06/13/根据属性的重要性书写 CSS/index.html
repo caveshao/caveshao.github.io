@@ -4,24 +4,25 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>node单线程异步和事件轮询 | CaveShao&#39;s blog</title>
+    <title>根据属性的重要性书写 CSS | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="首先解释一下单线程这个概念，顾名思义就是在一条线上运行。也就是说引擎对于 js 文件从头到尾依次执行，通常所说的同步就是这个意思。那么，异步是什么意思？">
-<meta name="keywords" content="node">
+    <meta name="description" content="1.显示属性  display visibility position float clear list-style top left2.自身属性 width height margin padding border overflow min-width3.文本属性和其他修饰属性 font text-align text-decoration vertical-align white-spac">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node单线程异步和事件轮询">
-<meta property="og:url" content="http://caveshao.com/2018/04/22/nodejs单线程异步和事件轮询/index.html">
+<meta property="og:title" content="根据属性的重要性书写 CSS">
+<meta property="og:url" content="http://caveshao.com/2018/06/13/根据属性的重要性书写 CSS/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="首先解释一下单线程这个概念，顾名思义就是在一条线上运行。也就是说引擎对于 js 文件从头到尾依次执行，通常所说的同步就是这个意思。那么，异步是什么意思？">
-<meta property="og:updated_time" content="2018-04-22T11:57:49.469Z">
+<meta property="og:description" content="1.显示属性  display visibility position float clear list-style top left2.自身属性 width height margin padding border overflow min-width3.文本属性和其他修饰属性 font text-align text-decoration vertical-align white-spac">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-d11ae74c579496fe.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-06-13T07:02:17.923Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node单线程异步和事件轮询">
-<meta name="twitter:description" content="首先解释一下单线程这个概念，顾名思义就是在一条线上运行。也就是说引擎对于 js 文件从头到尾依次执行，通常所说的同步就是这个意思。那么，异步是什么意思？">
+<meta name="twitter:title" content="根据属性的重要性书写 CSS">
+<meta name="twitter:description" content="1.显示属性  display visibility position float clear list-style top left2.自身属性 width height margin padding border overflow min-width3.文本属性和其他修饰属性 font text-align text-decoration vertical-align white-spac">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-d11ae74c579496fe.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -81,14 +82,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/04/22/nodejs单线程异步和事件轮询/" title="node单线程异步和事件轮询" itemprop="url">node单线程异步和事件轮询</a>
+      <a href="/2018/06/13/根据属性的重要性书写 CSS/" title="根据属性的重要性书写 CSS" itemprop="url">根据属性的重要性书写 CSS</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2018-04-22T11:48:27.815Z" itemprop="datePublished"> 发表于 2018-04-22</time>
+    <time datetime="2018-06-13T07:00:22.129Z" itemprop="datePublished"> 发表于 2018-06-13</time>
     
   </p>
 </header>
@@ -101,13 +102,35 @@
 		
 		</div>
 		
-		<p>首先解释一下单线程这个概念，顾名思义就是在一条线上运行。也就是说引擎对于 js 文件从头到尾依次执行，通常所说的同步就是这个意思。那么，异步是什么意思？</p>
-<a id="more"></a>
-<p>要解释异步首先看一下下方的代码：</p>
-<pre><code>request.get(&quot;www.xxx.com:8080/articles&quot;,function() {})
-</code></pre><p>在这段代码中，有一个匿名 function，这个函数被称为回调函数。在解析 js 时这个函数是不会被立即执行的，只有对服务器的请求完成后这个函数才会被执行。既然这个函数不会被立即执行，那么这个函数及其所在的一段代码就是异步的。单线程异步简单来说就是这种机制。</p>
-<p>js 是单线程的，但引擎不是，在引擎中有一个线程叫做「事件触发线程」。这个线程是配合引擎的 js 线程实现 js 异步的。当引擎执行 js 遇到异步的方法时，会将回调函数交给事件触发线程。以上方的代码为例，回调函数交给事件触发程序后，当对服务器的请求完成，事件触发程序会将回调函数添加到它所管理的事件队列中。</p>
-<p>这个事件队列会一直等到同步的 js 执行完，添加到执行栈中接着执行。由于事件被触发的条件不同，事件队列会不断更新。js 线程中执行栈为空后就会一直查询事件队列，如果有新被触发的事件就添加到执行栈中执行。这个机制称为事件轮询。</p>
+		<a id="more"></a>
+<blockquote>
+<p>1.显示属性</p>
+<ul>
+<li>display</li>
+<li>visibility</li>
+<li>position</li>
+<li>float</li>
+<li>clear</li>
+<li>list-style</li>
+<li>top</li>
+<li>left<br>2.自身属性</li>
+<li>width</li>
+<li>height</li>
+<li>margin</li>
+<li>padding</li>
+<li>border</li>
+<li>overflow</li>
+<li>min-width<br>3.文本属性和其他修饰属性</li>
+<li>font</li>
+<li>text-align</li>
+<li>text-decoration</li>
+<li>vertical-align</li>
+<li>white-space</li>
+<li>color</li>
+<li>background</li>
+</ul>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/5816904-d11ae74c579496fe.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="捕获"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -115,14 +138,9 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/前端/">前端</a>
+  <a class="article-category-link" href="/categories/CSS/">CSS</a>
 </div>
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/node/">node</a>
-  </div>
 
 </div>
 
@@ -130,7 +148,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2018/04/22/nodejs单线程异步和事件轮询/" data-title="node单线程异步和事件轮询 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2018/06/13/根据属性的重要性书写 CSS/" data-title="根据属性的重要性书写 CSS | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -143,19 +161,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/04/29/JavaScript-改变对象属性赋值与取值操作的两种姿势/" title="JavaScript-改变对象属性赋值与取值操作的两种姿势">
-  <strong>上一篇：</strong><br/>
-  <span>
-  JavaScript-改变对象属性赋值与取值操作的两种姿势</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/04/21/js-严格模式下，为什么不能给未声明变量赋值/"  title="js-严格模式下，为什么不能给未声明变量赋值">
+<a href="/2018/06/09/解决-win-10-远程桌面身份验证错误问题/"  title="win10 远程桌面验证错误">
  <strong>下一篇：</strong><br/> 
- <span>js-严格模式下，为什么不能给未声明变量赋值
+ <span>win10 远程桌面验证错误
 </span>
 </a>
 </div>
