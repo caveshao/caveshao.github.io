@@ -4,26 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>win10 远程桌面验证错误 | CaveShao&#39;s blog</title>
+    <title>简单算法之插入排序 | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="win10 更新后在使用远程桌面功能后会出现如下名叫身份验证错误的提示：这是远程桌面相关的补丁更新造成的，不同的 windows 版本需要用到不同的方法解决这个问题。">
+    <meta name="description" content="有一群人，假设每个人的身高都不同，现在需要根据他们的身高由低到高进行排序。相信每个人都会很容易完成这个任务。方法不一，每个人都会选择自己的方法。每种方法的效率不尽相同，但都有成效。 一种方法是这样的：首先让这群人随意排成一队，然后第一个人站着不动，第二个人和自己的前一位比较（也就是第一位）。如果第二个人比前面的人矮，就与前面的人换位置，如果比前面的人高或相同，则站着不动。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="win10 远程桌面验证错误">
-<meta property="og:url" content="http://caveshao.com/2018/06/09/解决-win-10-远程桌面身份验证错误问题/index.html">
+<meta property="og:title" content="简单算法之插入排序">
+<meta property="og:url" content="http://caveshao.com/2018/11/06/简单算法之插入排序/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="win10 更新后在使用远程桌面功能后会出现如下名叫身份验证错误的提示：这是远程桌面相关的补丁更新造成的，不同的 windows 版本需要用到不同的方法解决这个问题。">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-567bfd4859c91e8d.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-0a812459770a2317.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-06-09T14:00:42.340Z">
+<meta property="og:description" content="有一群人，假设每个人的身高都不同，现在需要根据他们的身高由低到高进行排序。相信每个人都会很容易完成这个任务。方法不一，每个人都会选择自己的方法。每种方法的效率不尽相同，但都有成效。 一种方法是这样的：首先让这群人随意排成一队，然后第一个人站着不动，第二个人和自己的前一位比较（也就是第一位）。如果第二个人比前面的人矮，就与前面的人换位置，如果比前面的人高或相同，则站着不动。">
+<meta property="og:updated_time" content="2018-11-05T23:54:46.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="win10 远程桌面验证错误">
-<meta name="twitter:description" content="win10 更新后在使用远程桌面功能后会出现如下名叫身份验证错误的提示：这是远程桌面相关的补丁更新造成的，不同的 windows 版本需要用到不同的方法解决这个问题。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-567bfd4859c91e8d.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="简单算法之插入排序">
+<meta name="twitter:description" content="有一群人，假设每个人的身高都不同，现在需要根据他们的身高由低到高进行排序。相信每个人都会很容易完成这个任务。方法不一，每个人都会选择自己的方法。每种方法的效率不尽相同，但都有成效。 一种方法是这样的：首先让这群人随意排成一队，然后第一个人站着不动，第二个人和自己的前一位比较（也就是第一位）。如果第二个人比前面的人矮，就与前面的人换位置，如果比前面的人高或相同，则站着不动。">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -83,14 +80,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/06/09/解决-win-10-远程桌面身份验证错误问题/" title="win10 远程桌面验证错误" itemprop="url">win10 远程桌面验证错误</a>
+      <a href="/2018/11/06/简单算法之插入排序/" title="简单算法之插入排序" itemprop="url">简单算法之插入排序</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2018-06-09T13:59:10.542Z" itemprop="datePublished"> 发表于 2018-06-09</time>
+    <time datetime="2018-11-05T23:51:05.850Z" itemprop="datePublished"> 发表于 2018-11-06</time>
     
   </p>
 </header>
@@ -103,10 +100,42 @@
 		
 		</div>
 		
-		<p>win10 更新后在使用远程桌面功能后会出现如下名叫身份验证错误的提示：<br><img src="https://upload-images.jianshu.io/upload_images/5816904-567bfd4859c91e8d.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这是远程桌面相关的补丁更新造成的，不同的 windows 版本需要用到不同的方法解决这个问题。</p>
+		<p>有一群人，假设每个人的身高都不同，现在需要根据他们的身高由低到高进行排序。相信每个人都会很容易完成这个任务。方法不一，每个人都会选择自己的方法。每种方法的效率不尽相同，但都有成效。</p>
+<p>一种方法是这样的：首先让这群人随意排成一队，然后第一个人站着不动，第二个人和自己的前一位比较（也就是第一位）。如果第二个人比前面的人矮，就与前面的人换位置，如果比前面的人高或相同，则站着不动。</p>
 <a id="more"></a>
-<p>对于 windows 专业版，可以直接修改 CredSSP 加密 Oracle 修正，具体步骤是 <strong>win+r -&gt; 运行 gepdit.msc -&gt; 计算机配置 -&gt; 管理模板 -&gt; 系统 -&gt; 凭据分配 -&gt; 加密Oracle修正 -&gt; 上栏选择启用，下栏选择易受攻击 -&gt; 应用（若无效则重启计算机)</strong></p>
-<p>在 windows 家庭版中，无法运行 gepdit.msc，可以用修改注册表的方法解决这个问题  <strong>win+r<br>-&gt; 运行 regedit 打开注册表编辑器<br> -&gt; 找到目录：计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\<br>-&gt; System 上右键新建项，名称 CredSSP<br>-&gt; 在 CredSSP 上新建项，名称 Parameters<br>-&gt; 在 Parameters 上新建 DWORD(32) ，名称AllowEncryptionOracle<br>-&gt; 双击 AllowEncryptionOracle 设置值为 2 十六进制</strong><br>设置成功后，远程桌面就不会报错了，如果没有效果重启电脑试一下。<br><img src="https://upload-images.jianshu.io/upload_images/5816904-0a812459770a2317.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="win"></p>
+<p>第三个人和第二个人一样，只不过可能会比第二个人多一步。第三个人先与前面的人比较，如果他比前面的人矮就与前面的互换位置，换了位置后再与此时前面的人比较，直到前面的人比自己矮或前面没有任何人了。</p>
+<p>这种方法抽象出来，就是编程中的插入排序。以 js 代码为例，具体代码如下：</p>
+<blockquote>
+<p>1</p>
+</blockquote>
+<pre><code>let arr = [1,11,7,3,5,8,4,9]
+for(let i = 1;i &lt; arr.length;i++){
+  let store = arr[i];
+   let j = i-1;
+  while(j &gt; 0 &amp;&amp; arr[j] &gt; store) {
+    let mid = arr[j+1];
+     arr[j+1] = arr[j];
+     arr[j] = mid;
+    j--;
+    }
+}
+console.log(...arr);
+</code></pre><blockquote>
+<p>2</p>
+</blockquote>
+<pre><code>  let arr = [1,11,7,3,5,8,4,9]
+ for(let i = 1;i &lt; arr.length;i++){
+ let store = arr[i];
+ let j = i-1;
+ while(j &gt; 0 &amp;&amp; arr[j] &gt; store) {
+     arr[j+1] = arr[j];
+     j--;
+ }
+ arr[j+1] = store;
+}
+console.log(...arr);
+// 1 3 4 5 7 8 9 11
+</code></pre><p>上面两种方法思路是相似的，只不过数字交换的方式有点差别。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -114,7 +143,7 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/windows-常见问题/">windows 常见问题</a>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
 </div>
 
 
@@ -124,7 +153,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2018/06/09/解决-win-10-远程桌面身份验证错误问题/" data-title="win10 远程桌面验证错误 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2018/11/06/简单算法之插入排序/" data-title="简单算法之插入排序 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -137,19 +166,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/06/13/根据属性的重要性书写 CSS/" title="根据属性的重要性书写 CSS">
-  <strong>上一篇：</strong><br/>
-  <span>
-  根据属性的重要性书写 CSS</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/06/06/【翻译】GitHub-的光明未来/"  title="【翻译】GitHub 的光明未来">
+<a href="/2018/06/13/根据属性的重要性书写 CSS/"  title="根据属性的重要性书写 CSS">
  <strong>下一篇：</strong><br/> 
- <span>【翻译】GitHub 的光明未来
+ <span>根据属性的重要性书写 CSS
 </span>
 </a>
 </div>
