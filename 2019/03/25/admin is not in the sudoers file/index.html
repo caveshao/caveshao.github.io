@@ -4,26 +4,28 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>js-严格模式下，为什么不能给未声明变量赋值 | CaveShao&#39;s blog</title>
+    <title>admin is not in the sudoers file | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="在 JavaScript 的严格模式下，如果像下方代码一样给未声明变量赋值， js 引擎会抛出 ReferenceError 异常。 value = &amp;quot;未声明变量赋值&amp;quot;; 要透彻理解这种规则，可以先从非严格模式下看。 在非严格模式下，未声明变量赋值的行为是允许的，目的一般是声明一个全局变量。这种现象是 js 引擎的解析与执行规则导致的。">
-<meta name="keywords" content="JavaScript">
+    <meta name="description" content="在安装好 centos 后，在普通账户下使用 sudo 命令后会出现 admin is not in the sudoers file…… 的提示（PS:此处 admin 值的是你当前账户的账户名，不是必须为 admin），这是因为当前用户账号没有加入用户组，需要修改 sudoers 文件解决。">
+<meta name="keywords" content="Centos">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js-严格模式下，为什么不能给未声明变量赋值">
-<meta property="og:url" content="http://caveshao.com/2018/04/21/js-严格模式下，为什么不能给未声明变量赋值/index.html">
+<meta property="og:title" content="admin is not in the sudoers file">
+<meta property="og:url" content="http://caveshao.com/2019/03/25/admin is not in the sudoers file/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="在 JavaScript 的严格模式下，如果像下方代码一样给未声明变量赋值， js 引擎会抛出 ReferenceError 异常。 value = &amp;quot;未声明变量赋值&amp;quot;; 要透彻理解这种规则，可以先从非严格模式下看。 在非严格模式下，未声明变量赋值的行为是允许的，目的一般是声明一个全局变量。这种现象是 js 引擎的解析与执行规则导致的。">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-07fad6cca4bb4600.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-04-21T14:09:56.975Z">
+<meta property="og:description" content="在安装好 centos 后，在普通账户下使用 sudo 命令后会出现 admin is not in the sudoers file…… 的提示（PS:此处 admin 值的是你当前账户的账户名，不是必须为 admin），这是因为当前用户账号没有加入用户组，需要修改 sudoers 文件解决。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-31964309192ff452.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/441">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-9bf0347b3983f93f.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/582">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-50cbae0b6dc010b3.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/857">
+<meta property="og:updated_time" content="2019-03-25T00:50:38.141Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js-严格模式下，为什么不能给未声明变量赋值">
-<meta name="twitter:description" content="在 JavaScript 的严格模式下，如果像下方代码一样给未声明变量赋值， js 引擎会抛出 ReferenceError 异常。 value = &amp;quot;未声明变量赋值&amp;quot;; 要透彻理解这种规则，可以先从非严格模式下看。 在非严格模式下，未声明变量赋值的行为是允许的，目的一般是声明一个全局变量。这种现象是 js 引擎的解析与执行规则导致的。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-07fad6cca4bb4600.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="admin is not in the sudoers file">
+<meta name="twitter:description" content="在安装好 centos 后，在普通账户下使用 sudo 命令后会出现 admin is not in the sudoers file…… 的提示（PS:此处 admin 值的是你当前账户的账户名，不是必须为 admin），这是因为当前用户账号没有加入用户组，需要修改 sudoers 文件解决。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-31964309192ff452.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/441">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -83,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/04/21/js-严格模式下，为什么不能给未声明变量赋值/" title="js-严格模式下，为什么不能给未声明变量赋值" itemprop="url">js-严格模式下，为什么不能给未声明变量赋值</a>
+      <a href="/2019/03/25/admin is not in the sudoers file/" title="admin is not in the sudoers file" itemprop="url">admin is not in the sudoers file</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2018-04-21T14:08:12.785Z" itemprop="datePublished"> 发表于 2018-04-21</time>
+    <time datetime="2019-03-25T00:29:26.307Z" itemprop="datePublished"> 发表于 2019-03-25</time>
     
   </p>
 </header>
@@ -103,21 +105,18 @@
 		
 		</div>
 		
-		<p>在 JavaScript 的严格模式下，如果像下方代码一样给未声明变量赋值， js 引擎会抛出 ReferenceError 异常。</p>
-<pre><code>value = &quot;未声明变量赋值&quot;;
-</code></pre><p>要透彻理解这种规则，可以先从非严格模式下看。</p>
-<p>在非严格模式下，未声明变量赋值的行为是允许的，目的一般是声明一个全局变量。这种现象是 js 引擎的解析与执行规则导致的。</p>
+		<p>在安装好 centos 后，在普通账户下使用 sudo 命令后会出现 <strong>admin is not in the sudoers file……</strong> 的提示（PS:此处 admin 值的是你当前账户的账户名，不是必须为 admin），这是因为当前用户账号没有加入用户组，需要修改 sudoers 文件解决。</p>
 <a id="more"></a>
-<p>一段 js 代码想要执行，必须要先编译成可执行代码。这个过程一般分为词法分析、语法分析与代码生成三个步骤。具体细节不必展开，你只需要知道在编译过程中只有像是 「var value = 3; 」 这样有关键字声明的变量才会被声明在作用域中。</p>
-<p>当 js 引擎执行可执行代码时，如果遇到声明变量，会在各个作用域中由内向外、逐级寻找该变量。所以，js 引擎是找不到未被声明的变量的，因为作用域中根本不存在该变量。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5816904-07fad6cca4bb4600.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="seth-schwiet-40984.jpg"></p>
-<p>那么，为什么在非严格模式下未声明变量会变为全局变量？这就要从 js 的变量查询开始说起了。js 引擎在执行代码的过程中，有两种方式在作用域中查询变量：</p>
-<ul>
-<li>第一种是 LES 查询。当查询的目的是对变量进行赋值时，比如 「var b = 2」，进行这种查询。</li>
-<li>第二种查询是 RES 查询。当查询的目的是获取变量的值时，比如 「 if(a)」中的 a，进行这种查询。</li>
-</ul>
-<p>js 引擎在处理未声明变量时，显然是进行第一种查询。由于作用域中没有未声明的变量，所以查询会一直逐级向上直到全局作用域。这时，非严格模式与严格模式会有两种不同的处理方式。</p>
-<p>非严格模式下，如果作用域中没有所查询变量，全局作用域中就会自动创建一个具有该名称的变量。变量在全局作用域中，所以会变为一个全局变量。而在严格模式下全局作用域中不会自动创建该变量， js 引擎在查询不到变量后就会抛出一个 ReferenceError 异常。</p>
+<p>具体的解决办法如下：</p>
+<p><strong>1.</strong>在命令界面输入 su ，切换到 root 用户</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5816904-31964309192ff452.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/441" alt="img"></p>
+<p><strong>2.</strong>因为 sudoers 文件不可写，所以为 sudoers 添加 写权限<br>输入命令 chmod u+w /etc/sudoers</p>
+<p><strong>3.</strong>修改 sudoers 文件<br>输入命令 vim /etc/audoers<br>如果没有安装 vim 可以使用 vi /etc/sudoers<br>打开后添加如下一行：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5816904-9bf0347b3983f93f.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/582" alt="img"></p>
+<p><strong>4.</strong>去掉 sudoers 的写权限<br>输入命令 chmod u-w /etc/sudoers</p>
+<p>完成后<strong>切换到普通用户</strong>，测试 sudo 命令是否可用</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5816904-50cbae0b6dc010b3.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/857" alt="img"></p>
+<p>如上图所示，就是成功了。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -125,13 +124,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/前端/">前端</a>
+  <a class="article-category-link" href="/categories/Linux/">Linux</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/JavaScript/">JavaScript</a>
+  <span></span> <a href="/tags/Centos/">Centos</a>
   </div>
 
 </div>
@@ -140,7 +139,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2018/04/21/js-严格模式下，为什么不能给未声明变量赋值/" data-title="js-严格模式下，为什么不能给未声明变量赋值 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2019/03/25/admin is not in the sudoers file/" data-title="admin is not in the sudoers file | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -153,19 +152,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/04/22/nodejs单线程异步和事件轮询/" title="node单线程异步和事件轮询">
-  <strong>上一篇：</strong><br/>
-  <span>
-  node单线程异步和事件轮询</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/04/20/《如何阅读一本书》的第一篇跑题感想/"  title="《如何阅读一本书》感想">
+<a href="/2018/11/06/简单算法之插入排序/"  title="简单算法之插入排序">
  <strong>下一篇：</strong><br/> 
- <span>《如何阅读一本书》感想
+ <span>简单算法之插入排序
 </span>
 </a>
 </div>
