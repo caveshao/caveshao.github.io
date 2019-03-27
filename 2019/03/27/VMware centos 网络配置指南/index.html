@@ -11,22 +11,22 @@
     
 
     
-    <meta name="description" content="一 如何配置 本次教程中使用的 NAT 连接方式，具体步骤为   在系统上右击——&amp;gt;可移动设备——&amp;gt;网络适配器——&amp;gt;设置然后如下图选择 NET然后点击确定。 编辑——&amp;gt;虚拟网络编辑器——&amp;gt;右下角点击「更改设置」（有时候可能没有这个选项，跳过这一小步即可）先点击 NET 模式，然后将使用本地 DHCP 服务的选择为未勾选状态 。点击 NAT 设置，查看子网 IP 、掩">
+    <meta name="description" content="一 如何配置 本次教程中使用的 NAT 连接方式，具体步骤为   在系统上右击——&amp;gt;可移动设备——&amp;gt;网络适配器——&amp;gt;设置然后如下图选择 NET   然后点击确定。">
 <meta name="keywords" content="Centos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vmware centos 网络配置指南">
 <meta property="og:url" content="http://caveshao.com/2019/03/27/VMware centos 网络配置指南/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="一 如何配置 本次教程中使用的 NAT 连接方式，具体步骤为   在系统上右击——&amp;gt;可移动设备——&amp;gt;网络适配器——&amp;gt;设置然后如下图选择 NET然后点击确定。 编辑——&amp;gt;虚拟网络编辑器——&amp;gt;右下角点击「更改设置」（有时候可能没有这个选项，跳过这一小步即可）先点击 NET 模式，然后将使用本地 DHCP 服务的选择为未勾选状态 。点击 NAT 设置，查看子网 IP 、掩">
+<meta property="og:description" content="一 如何配置 本次教程中使用的 NAT 连接方式，具体步骤为   在系统上右击——&amp;gt;可移动设备——&amp;gt;网络适配器——&amp;gt;设置然后如下图选择 NET   然后点击确定。">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-52839468569ce6fc.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-2e0cfce9f49475e6.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-eb90008d94c0af21.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-00a7c5ab237f968a.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-12d6eea78ba02f8d.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-27T13:45:33.923Z">
+<meta property="og:updated_time" content="2019-03-27T13:49:41.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vmware centos 网络配置指南">
-<meta name="twitter:description" content="一 如何配置 本次教程中使用的 NAT 连接方式，具体步骤为   在系统上右击——&amp;gt;可移动设备——&amp;gt;网络适配器——&amp;gt;设置然后如下图选择 NET然后点击确定。 编辑——&amp;gt;虚拟网络编辑器——&amp;gt;右下角点击「更改设置」（有时候可能没有这个选项，跳过这一小步即可）先点击 NET 模式，然后将使用本地 DHCP 服务的选择为未勾选状态 。点击 NAT 设置，查看子网 IP 、掩">
+<meta name="twitter:description" content="一 如何配置 本次教程中使用的 NAT 连接方式，具体步骤为   在系统上右击——&amp;gt;可移动设备——&amp;gt;网络适配器——&amp;gt;设置然后如下图选择 NET   然后点击确定。">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-52839468569ce6fc.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
     
@@ -112,7 +112,10 @@
 <p>本次教程中使用的 NAT 连接方式，具体步骤为</p>
 </blockquote>
 <ol>
-<li>在系统上右击——&gt;可移动设备——&gt;网络适配器——&gt;设置<br>然后如下图选择 NET<br><img src="https://upload-images.jianshu.io/upload_images/5816904-52839468569ce6fc.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>然后点击确定。</li>
+<li><p>在系统上右击——&gt;可移动设备——&gt;网络适配器——&gt;设置<br>然后如下图选择 NET  <img src="https://upload-images.jianshu.io/upload_images/5816904-52839468569ce6fc.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>然后点击确定。</p>
+<a id="more"></a>
+</li>
 <li><p>编辑——&gt;虚拟网络编辑器——&gt;右下角点击「更改设置」（有时候可能没有这个选项，跳过这一小步即可）<br><img src="https://upload-images.jianshu.io/upload_images/5816904-2e0cfce9f49475e6.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>先点击 NET 模式，然后将使用本地 DHCP 服务的选择为未勾选状态 。<br>点击 NAT 设置，查看子网 IP 、掩码及 网关<br><img src="https://upload-images.jianshu.io/upload_images/5816904-eb90008d94c0af21.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 </li>
 <li><p>启动系统，配置 centos 系统内的网络配置：<br>输入 cd /etc/sysconfig/network-scripts<br>回车，然后输入 ls 查看该目录下的文件<br><img src="https://upload-images.jianshu.io/upload_images/5816904-00a7c5ab237f968a.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>找到与如图所示以 ifcfg-ens 开头的文件<br>输入 <strong>su</strong> 转到 root 用户<br>我的文件是 ifcfg-ens33<br>所以我输入<strong>vim ifcfg-ens33</strong> 编辑该文件<br>找到如下几个配置项，配置相应属性，具体属性为 NET 设置中查到的属性。<br>ip 地址为子网 IP 随意改掉最后一个数</p>
@@ -287,7 +290,7 @@ GATEWAY=192.168.109.2 网关
 			
 		
 			
-				<li><a href="/tags/操作系统/" title="操作系统">操作系统<sup>1</sup></a></li>
+				<li><a href="/tags/闭包/" title="闭包">闭包<sup>1</sup></a></li>
 			
 		
 			
@@ -295,11 +298,11 @@ GATEWAY=192.168.109.2 网关
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>1</sup></a></li>
+				<li><a href="/tags/原理/" title="原理">原理<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/原理/" title="原理">原理<sup>1</sup></a></li>
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>1</sup></a></li>
 			
 		
 			
@@ -315,7 +318,15 @@ GATEWAY=192.168.109.2 网关
 			
 		
 			
+				<li><a href="/tags/感想/" title="感想">感想<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/Flexbox/" title="Flexbox">Flexbox<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/浏览器兼容/" title="浏览器兼容">浏览器兼容<sup>1</sup></a></li>
 			
 		
 			
@@ -323,19 +334,11 @@ GATEWAY=192.168.109.2 网关
 			
 		
 			
-				<li><a href="/tags/感想/" title="感想">感想<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/闭包/" title="闭包">闭包<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/技术历史/" title="技术历史">技术历史<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/浏览器兼容/" title="浏览器兼容">浏览器兼容<sup>1</sup></a></li>
+				<li><a href="/tags/操作系统/" title="操作系统">操作系统<sup>1</sup></a></li>
 			
 		
 			
