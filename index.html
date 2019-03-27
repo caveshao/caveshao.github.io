@@ -81,6 +81,95 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2019/03/27/VMware centos 网络配置指南/" title="Vmware centos 网络配置指南" itemprop="url">Vmware centos 网络配置指南</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
+		
+  <p class="article-time">
+    <time datetime="2019-03-27T13:39:24.994Z" itemprop="datePublished"> 发表于 2019-03-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <blockquote>
+<p><strong>一</strong> 如何配置</p>
+<p>本次教程中使用的 NAT 连接方式，具体步骤为</p>
+</blockquote>
+<ol>
+<li>在系统上右击——&gt;可移动设备——&gt;网络适配器——&gt;设置<br>然后如下图选择 NET<br><img src="https://upload-images.jianshu.io/upload_images/5816904-52839468569ce6fc.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>然后点击确定。</li>
+<li><p>编辑——&gt;虚拟网络编辑器——&gt;右下角点击「更改设置」（有时候可能没有这个选项，跳过这一小步即可）<br><img src="https://upload-images.jianshu.io/upload_images/5816904-2e0cfce9f49475e6.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>先点击 NET 模式，然后将使用本地 DHCP 服务的选择为未勾选状态 。<br>点击 NAT 设置，查看子网 IP 、掩码及 网关<br><img src="https://upload-images.jianshu.io/upload_images/5816904-eb90008d94c0af21.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>启动系统，配置 centos 系统内的网络配置：<br>输入 cd /etc/sysconfig/network-scripts<br>回车，然后输入 ls 查看该目录下的文件<br><img src="https://upload-images.jianshu.io/upload_images/5816904-00a7c5ab237f968a.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>找到与如图所示以 ifcfg-ens 开头的文件<br>输入 <strong>su</strong> 转到 root 用户<br>我的文件是 ifcfg-ens33<br>所以我输入<strong>vim ifcfg-ens33</strong> 编辑该文件<br>找到如下几个配置项，配置相应属性，具体属性为 NET 设置中查到的属性。<br>ip 地址为子网 IP 随意改掉最后一个数</p>
+<pre><code>ONBOOT=yes 
+BOOTPROTO=static 静态ip
+IPADDR=192.168.109.7 ip地址
+NETMASK=255.255.255.0 子网掩码
+GATEWAY=192.168.109.2 网关
+</code></pre></li>
+<li><p>修改 DNS</p>
+<p>  vim /etc/resolv.conf </p>
+<p>修改 nameserver 为网关地址 </p>
+<p>   nameserver 192.168.109.2</p>
+</li>
+</ol>
+<p>如此，网络配置完成。<br>ping 宿主机测试一下。<br><a href="https://www.jianshu.com/p/19ca37914a4c" target="_blank" rel="external">下一篇文章</a>我将具体介绍如何测试配置正确。</p>
+<blockquote>
+<p>####<strong>二</strong> 出现错误怎么排查</p>
+</blockquote>
+<ul>
+<li>配置中的网关等属性与 NET 中的属性必须一致。</li>
+<li>重点检查 DNS 是否正确。</li>
+<li>网络和 Internet 设置——&gt;更改适配器选项——&gt;VMnet8 右键属性——&gt;设置 IPv4 属性如下(具体属性根据自己的虚拟机的地址改变):<br><img src="https://upload-images.jianshu.io/upload_images/5816904-12d6eea78ba02f8d.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Linux/">Linux</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Centos/">Centos</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2019/03/25/admin is not in the sudoers file/" title="admin is not in the sudoers file" itemprop="url">admin is not in the sudoers file</a>
   </h1>
   <p class="article-author">By
@@ -600,70 +689,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2018/04/21/js-严格模式下，为什么不能给未声明变量赋值/" title="js-严格模式下，为什么不能给未声明变量赋值" itemprop="url">js-严格模式下，为什么不能给未声明变量赋值</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
-		
-  <p class="article-time">
-    <time datetime="2018-04-21T14:08:12.785Z" itemprop="datePublished"> 发表于 2018-04-21</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>在 JavaScript 的严格模式下，如果像下方代码一样给未声明变量赋值， js 引擎会抛出 ReferenceError 异常。</p>
-<pre><code>value = &quot;未声明变量赋值&quot;;
-</code></pre><p>要透彻理解这种规则，可以先从非严格模式下看。</p>
-<p>在非严格模式下，未声明变量赋值的行为是允许的，目的一般是声明一个全局变量。这种现象是 js 引擎的解析与执行规则导致的。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2018/04/21/js-严格模式下，为什么不能给未声明变量赋值/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/前端/">前端</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/JavaScript/">JavaScript</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -699,7 +724,7 @@
 		  
 		
 		  
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>2</sup></a></li>
 		  
 		
 		  
@@ -760,6 +785,30 @@
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/Centos/" title="Centos">Centos<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/操作系统/" title="操作系统">操作系统<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/express/" title="express">express<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/原理/" title="原理">原理<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/vue/" title="vue">vue<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>1</sup></a></li>
 			
 		
@@ -768,43 +817,7 @@
 			
 		
 			
-				<li><a href="/tags/Centos/" title="Centos">Centos<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/原理/" title="原理">原理<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/node/" title="node">node<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/vue/" title="vue">vue<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/express/" title="express">express<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/闭包/" title="闭包">闭包<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/感想/" title="感想">感想<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/Flexbox/" title="Flexbox">Flexbox<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/浏览器兼容/" title="浏览器兼容">浏览器兼容<sup>1</sup></a></li>
 			
 		
 			
@@ -812,11 +825,23 @@
 			
 		
 			
+				<li><a href="/tags/感想/" title="感想">感想<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/闭包/" title="闭包">闭包<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/技术历史/" title="技术历史">技术历史<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/操作系统/" title="操作系统">操作系统<sup>1</sup></a></li>
+				<li><a href="/tags/浏览器兼容/" title="浏览器兼容">浏览器兼容<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/node/" title="node">node<sup>1</sup></a></li>
 			
 		
 		</ul>
