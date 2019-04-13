@@ -4,25 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>根据属性的重要性书写 CSS | CaveShao&#39;s blog</title>
+    <title>由于在客户端检测到一个协议错误（0x1104） | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="1.显示属性">
+    <meta name="description" content="首先检查服务器的安全组是否开放了 22 以及 3306 端口">
 <meta property="og:type" content="article">
-<meta property="og:title" content="根据属性的重要性书写 CSS">
-<meta property="og:url" content="http://caveshao.com/2018/06/13/根据属性的重要性书写 CSS/index.html">
+<meta property="og:title" content="由于在客户端检测到一个协议错误（0x1104）">
+<meta property="og:url" content="http://caveshao.com/2019/04/13/由于在客户端检测到一个协议错误（0x1104）/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="1.显示属性">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-d11ae74c579496fe.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-06-13T07:35:04.870Z">
+<meta property="og:description" content="首先检查服务器的安全组是否开放了 22 以及 3306 端口">
+<meta property="og:updated_time" content="2019-04-13T13:19:23.778Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="根据属性的重要性书写 CSS">
-<meta name="twitter:description" content="1.显示属性">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-d11ae74c579496fe.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="由于在客户端检测到一个协议错误（0x1104）">
+<meta name="twitter:description" content="首先检查服务器的安全组是否开放了 22 以及 3306 端口">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -82,14 +80,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/06/13/根据属性的重要性书写 CSS/" title="根据属性的重要性书写 CSS" itemprop="url">根据属性的重要性书写 CSS</a>
+      <a href="/2019/04/13/由于在客户端检测到一个协议错误（0x1104）/" title="由于在客户端检测到一个协议错误（0x1104）" itemprop="url">由于在客户端检测到一个协议错误（0x1104）</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2018-06-13T07:00:22.129Z" itemprop="datePublished"> 发表于 2018-06-13</time>
+    <time datetime="2019-04-13T13:15:55.000Z" itemprop="datePublished"> 发表于 2019-04-13</time>
     
   </p>
 </header>
@@ -102,40 +100,17 @@
 		
 		</div>
 		
-		<blockquote>
-<p>1.显示属性<br><a id="more"></a></p>
-</blockquote>
-<ul>
-<li>display</li>
-<li>visibility</li>
-<li>position</li>
-<li>float</li>
-<li>clear</li>
-<li>list-style</li>
-<li>top</li>
-<li>left<blockquote>
-<p>2.自身属性</p>
-</blockquote>
-</li>
-<li>width</li>
-<li>height</li>
-<li>margin</li>
-<li>padding</li>
-<li>border</li>
-<li>overflow</li>
-<li>min-width<blockquote>
-<p>3.文本属性和其他修饰属性</p>
-</blockquote>
-</li>
-<li>font</li>
-<li>text-align</li>
-<li>text-decoration</li>
-<li>vertical-align</li>
-<li>white-space</li>
-<li>color</li>
-<li>background</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/5816904-d11ae74c579496fe.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="捕获"></p>
+		<ol>
+<li>首先检查服务器的安全组是否开放了 22 以及 3306 端口</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li>利用 ssh 连接，具体步骤为：</li>
+</ol>
+<p>​     打开命令行，输入 ssh user@ip<br>     其中 user 为用户名，centos 一般为 root。ip 为服务器地址。</p>
+<ol>
+<li>远程连接后若无法 ping 百度这样的网址，可以先用 service iptables stop 关掉防火墙。</li>
+</ol>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -143,7 +118,7 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  <a class="article-category-link" href="/categories/windows-常见问题/">windows 常见问题</a>
 </div>
 
 
@@ -153,7 +128,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2018/06/13/根据属性的重要性书写 CSS/" data-title="根据属性的重要性书写 CSS | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2019/04/13/由于在客户端检测到一个协议错误（0x1104）/" data-title="由于在客户端检测到一个协议错误（0x1104） | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -166,19 +141,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/11/06/简单算法之插入排序/" title="简单算法之插入排序">
-  <strong>上一篇：</strong><br/>
-  <span>
-  简单算法之插入排序</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/06/09/解决-win-10-远程桌面身份验证错误问题/"  title="win10 远程桌面验证错误">
+<a href="/2019/03/27/VMware centos 网络配置指南/"  title="Vmware centos 网络配置指南">
  <strong>下一篇：</strong><br/> 
- <span>win10 远程桌面验证错误
+ <span>Vmware centos 网络配置指南
 </span>
 </a>
 </div>
