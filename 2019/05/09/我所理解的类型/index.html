@@ -4,28 +4,25 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>windows 中 MongoDB 的配置及使用方法 | CaveShao&#39;s blog</title>
+    <title>我所理解的类型 | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="1.下载：打开网址 下载链接，选择 community server 进行下载。如果想要下载之前的版本，可以先点击下载选择框中右上角的 previous Release ，然后再下载。">
-<meta name="keywords" content="MongoDB">
+    <meta name="description" content="1.七种语言类型 js 中有七种语言类型，分别是 Undefined、Null、Number、String、Boolean、Symbol、Object。这七种类型可以分为两类，简单数据类型（基本数据类型）和复杂数据类型。Object 是复杂数据类型，其余六种类型为简单数据类型。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="windows 中 MongoDB 的配置及使用方法">
-<meta property="og:url" content="http://caveshao.com/2018/04/15/windows-中-MongoDB-配置及使用方法/index.html">
+<meta property="og:title" content="我所理解的类型">
+<meta property="og:url" content="http://caveshao.com/2019/05/09/我所理解的类型/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="1.下载：打开网址 下载链接，选择 community server 进行下载。如果想要下载之前的版本，可以先点击下载选择框中右上角的 previous Release ，然后再下载。">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-aae23e15a228762f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-8c5b02994cce0a14.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-aed56e63fa13f7f9.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-04-15T00:21:08.707Z">
+<meta property="og:description" content="1.七种语言类型 js 中有七种语言类型，分别是 Undefined、Null、Number、String、Boolean、Symbol、Object。这七种类型可以分为两类，简单数据类型（基本数据类型）和复杂数据类型。Object 是复杂数据类型，其余六种类型为简单数据类型。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-f248fb305f5b24eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-09T12:44:35.643Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="windows 中 MongoDB 的配置及使用方法">
-<meta name="twitter:description" content="1.下载：打开网址 下载链接，选择 community server 进行下载。如果想要下载之前的版本，可以先点击下载选择框中右上角的 previous Release ，然后再下载。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-aae23e15a228762f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="我所理解的类型">
+<meta name="twitter:description" content="1.七种语言类型 js 中有七种语言类型，分别是 Undefined、Null、Number、String、Boolean、Symbol、Object。这七种类型可以分为两类，简单数据类型（基本数据类型）和复杂数据类型。Object 是复杂数据类型，其余六种类型为简单数据类型。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-f248fb305f5b24eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -85,14 +82,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/04/15/windows-中-MongoDB-配置及使用方法/" title="windows 中 MongoDB 的配置及使用方法" itemprop="url">windows 中 MongoDB 的配置及使用方法</a>
+      <a href="/2019/05/09/我所理解的类型/" title="我所理解的类型" itemprop="url">我所理解的类型</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2018-04-15T00:18:34.199Z" itemprop="datePublished"> 发表于 2018-04-15</time>
+    <time datetime="2019-05-09T12:42:58.689Z" itemprop="datePublished"> 发表于 2019-05-09</time>
     
   </p>
 </header>
@@ -101,31 +98,26 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载："><span class="toc-number">1.</span> <span class="toc-text">1.下载：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-安装："><span class="toc-number">2.</span> <span class="toc-text">2.安装：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-服务添加至-windows"><span class="toc-number">3.</span> <span class="toc-text">3.服务添加至 windows</span></a></li></ol>
+			
 		
 		</div>
 		
-		<h3 id="1-下载："><a href="#1-下载：" class="headerlink" title="1.下载："></a>1.下载：</h3><p>打开网址 <a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank" rel="external">下载链接</a>，选择 community server 进行下载。如果想要下载之前的版本，可以先点击下载选择框中右上角的 previous Release ，然后再下载。</p>
-<p><a id="more"></a><img src="https://upload-images.jianshu.io/upload_images/5816904-aae23e15a228762f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mongodb"></p>
-<h3 id="2-安装："><a href="#2-安装：" class="headerlink" title="2.安装："></a>2.安装：</h3><p>安装过程有如下画面，选哪一个都可以。第一个是默认配置，另一个是自己配置。<br><img src="https://upload-images.jianshu.io/upload_images/5816904-8c5b02994cce0a14.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装"></p>
-<h3 id="3-服务添加至-windows"><a href="#3-服务添加至-windows" class="headerlink" title="3.服务添加至 windows"></a>3.服务添加至 windows</h3><p>安装结束后最好将服务添加至 windows，这样启动更加方便。</p>
-<ol>
-<li>首先新建一个 mongo.config 文件，防止安装目录的根目录下。<br><img src="https://upload-images.jianshu.io/upload_images/5816904-aed56e63fa13f7f9.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="捕获1.PNG"></li>
-<li><p>然后用记事本（或其他软件）打开文件，编辑内容如下：</p>
-<pre><code>dbpath=你的安装目录\data\db
-logpath=你的安装目录\log\mongo.log
-port=27017
-</code></pre><p>注意，上方路径中的文件与文件夹是不存在的，需要自己先创建。port 是端口号。</p>
-</li>
-<li><p>用命令行打开 bin 目录，输入</p>
-<pre><code>mongod.exe  --config  mongo.config文件的绝对路径  --install
-</code></pre></li>
-<li><p>最后，任意时刻打开命令行，输入：</p>
-<pre><code>net start MongoDB
-net stop MongoDB
-</code></pre><p>就可以开启或关闭 MongoDB 了。</p>
-</li>
-</ol>
+		<p> <strong>1.七种语言类型</strong></p>
+<p>js 中有七种语言类型，分别是 Undefined、Null、Number、String、Boolean、Symbol、Object。这七种类型可以分为两类，简单数据类型（基本数据类型）和复杂数据类型。Object 是复杂数据类型，其余六种类型为简单数据类型。</p>
+<a id="more"></a>
+<p><strong>2.Object 类型的子类型</strong></p>
+<p>js 中还有一些类型归属于 Object 类型，它们可以称为 Object 的子类型，比如 Object、Function、Number、String、Array、Boolean、Regexp、Date、Error。</p>
+<p>之所以称这些类型为「Object 的子类型」，是因为与这些类型对应的实例是具有属性和方法的对象。</p>
+<p>比如 typeof new String()，得到的结果是 object。再比如对 new Number() 或 new Function() 产生的对象使用 Object.prototype.toString.call(产生的对象) 方法，得到的结果分别是 [object Array] 和 [object Function]。</p>
+<p><strong>3. 内建函数与内置对象</strong></p>
+<p>Array 是 js 中的内建函数（或原生函数），使用 Array() 可以构造 Array 类型的实例。同样，对象的每一种子类型都有自己的内建函数，使用 new 都可以产生自己的实例（ps：Symbol 类型行为不同）。</p>
+<p>js 中的内置对象与内建函数是同一种东西。这个可以验证，利用Object. prototype.<br>toString.call()，测得 Object、Array 等的结果都是 [object Function]。</p>
+<p>至于对象子类型间的继承关系，这涉及到原型链的知识，我会在另一篇文章中讨论。</p>
+<hr>
+<p><strong>知识理解的不同</strong></p>
+<p>在《JavaScript高级程序设计》中将 Object 的子类型定义为引用类型，有人也将这些类型叫做运行时类型。在我看来这些不同的名称源于不同的理解方式。</p>
+<p>其实同一种知识，不同的人理解起来常常有一些不同。这些不同有时候并没有对错之分，只是知识的不同角度的诠释。就像同一片星空，在每个人的眼中却是不同的景色。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5816904-f248fb305f5b24eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="James Harris  2017-01-20 08-48-05 .jpg"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -133,14 +125,9 @@ net stop MongoDB
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/数据库/">数据库</a>
+  <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
 </div>
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/MongoDB/">MongoDB</a>
-  </div>
 
 </div>
 
@@ -148,7 +135,7 @@ net stop MongoDB
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2018/04/15/windows-中-MongoDB-配置及使用方法/" data-title="windows 中 MongoDB 的配置及使用方法 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2019/05/09/我所理解的类型/" data-title="我所理解的类型 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -161,19 +148,11 @@ net stop MongoDB
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/04/16/js-变量提升的原理/" title="js 变量提升的原理">
-  <strong>上一篇：</strong><br/>
-  <span>
-  js 变量提升的原理</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/04/13/孙悟空的棒和箍/"  title="孙悟空的棒和箍">
+<a href="/2019/04/20/JS数组平铺三种姿势/"  title="JS 数组平铺三种姿势">
  <strong>下一篇：</strong><br/> 
- <span>孙悟空的棒和箍
+ <span>JS 数组平铺三种姿势
 </span>
 </a>
 </div>
@@ -188,7 +167,7 @@ net stop MongoDB
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载："><span class="toc-number">1.</span> <span class="toc-text">1.下载：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-安装："><span class="toc-number">2.</span> <span class="toc-text">2.安装：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-服务添加至-windows"><span class="toc-number">3.</span> <span class="toc-text">3.服务添加至 windows</span></a></li></ol>
+ 
  
   </div>
 
