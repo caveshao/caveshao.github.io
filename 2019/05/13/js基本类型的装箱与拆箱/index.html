@@ -4,24 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>node单线程异步和事件轮询 | CaveShao&#39;s blog</title>
+    <title>JavaScript基本类型的装箱与拆箱 | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="首先解释一下单线程这个概念，顾名思义就是在一条线上运行。也就是说引擎对于 js 文件从头到尾依次执行，通常所说的同步就是这个意思。那么，异步是什么意思？">
-<meta name="keywords" content="node">
+    <meta name="description" content="在 JavaScript 中，有时会碰到以下两种类型的代码： 1.        var num = 123;        var str = ‘123’;        num.toFixed(2); // ‘123.00’        str.split(‘’); // [‘1’,’2’,’3’]2.        var num = [1,2,3];        var str = {">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node单线程异步和事件轮询">
-<meta property="og:url" content="http://caveshao.com/2018/04/22/nodejs单线程异步和事件轮询/index.html">
+<meta property="og:title" content="JavaScript基本类型的装箱与拆箱">
+<meta property="og:url" content="http://caveshao.com/2019/05/13/js基本类型的装箱与拆箱/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="首先解释一下单线程这个概念，顾名思义就是在一条线上运行。也就是说引擎对于 js 文件从头到尾依次执行，通常所说的同步就是这个意思。那么，异步是什么意思？">
-<meta property="og:updated_time" content="2018-04-22T11:57:49.469Z">
+<meta property="og:description" content="在 JavaScript 中，有时会碰到以下两种类型的代码： 1.        var num = 123;        var str = ‘123’;        num.toFixed(2); // ‘123.00’        str.split(‘’); // [‘1’,’2’,’3’]2.        var num = [1,2,3];        var str = {">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-0acf1b91d07ebf4d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-0acf1b91d07ebf4d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-13T11:14:26.542Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node单线程异步和事件轮询">
-<meta name="twitter:description" content="首先解释一下单线程这个概念，顾名思义就是在一条线上运行。也就是说引擎对于 js 文件从头到尾依次执行，通常所说的同步就是这个意思。那么，异步是什么意思？">
+<meta name="twitter:title" content="JavaScript基本类型的装箱与拆箱">
+<meta name="twitter:description" content="在 JavaScript 中，有时会碰到以下两种类型的代码： 1.        var num = 123;        var str = ‘123’;        num.toFixed(2); // ‘123.00’        str.split(‘’); // [‘1’,’2’,’3’]2.        var num = [1,2,3];        var str = {">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-0acf1b91d07ebf4d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -81,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/04/22/nodejs单线程异步和事件轮询/" title="node单线程异步和事件轮询" itemprop="url">node单线程异步和事件轮询</a>
+      <a href="/2019/05/13/js基本类型的装箱与拆箱/" title="JavaScript基本类型的装箱与拆箱" itemprop="url">JavaScript基本类型的装箱与拆箱</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2018-04-22T11:48:27.815Z" itemprop="datePublished"> 发表于 2018-04-22</time>
+    <time datetime="2019-05-13T11:11:52.431Z" itemprop="datePublished"> 发表于 2019-05-13</time>
     
   </p>
 </header>
@@ -101,13 +103,56 @@
 		
 		</div>
 		
-		<p>首先解释一下单线程这个概念，顾名思义就是在一条线上运行。也就是说引擎对于 js 文件从头到尾依次执行，通常所说的同步就是这个意思。那么，异步是什么意思？</p>
+		<p>在 JavaScript 中，有时会碰到以下两种类型的代码：</p>
+<p>1.<br>        var num = 123;<br>        var str = ‘123’;<br>        num.toFixed(2); // ‘123.00’<br>        str.split(‘’); // [‘1’,’2’,’3’]<br>2.<br>        var num = [1,2,3];<br>        var str = {<br>              name:’hahaha’<br>        };<br>        console.log(num+1); //1,2,31<br>        String(str); //‘[object Object]’</p>
 <a id="more"></a>
-<p>要解释异步首先看一下下方的代码：</p>
-<pre><code>request.get(&quot;www.xxx.com:8080/articles&quot;,function() {})
-</code></pre><p>在这段代码中，有一个匿名 function，这个函数被称为回调函数。在解析 js 时这个函数是不会被立即执行的，只有对服务器的请求完成后这个函数才会被执行。既然这个函数不会被立即执行，那么这个函数及其所在的一段代码就是异步的。单线程异步简单来说就是这种机制。</p>
-<p>js 是单线程的，但引擎不是，在引擎中有一个线程叫做「事件触发线程」。这个线程是配合引擎的 js 线程实现 js 异步的。当引擎执行 js 遇到异步的方法时，会将回调函数交给事件触发线程。以上方的代码为例，回调函数交给事件触发程序后，当对服务器的请求完成，事件触发程序会将回调函数添加到它所管理的事件队列中。</p>
-<p>这个事件队列会一直等到同步的 js 执行完，添加到执行栈中接着执行。由于事件被触发的条件不同，事件队列会不断更新。js 线程中执行栈为空后就会一直查询事件队列，如果有新被触发的事件就添加到执行栈中执行。这个机制称为事件轮询。</p>
+<p>在第一段代码中，我们在两个基本类型的值上调用方法。众所周知，在 JavaScript 中只有 Object 类型才有方法。在第二段代码中，我们可以把两个 Object 类型的值当做基本类型的值直接使用。这就是 JavaScript 装箱与拆箱在代码中的具体体现。</p>
+<p>下面我分别来解释一下 JavaScript 中的装箱与拆箱。</p>
+<blockquote>
+<p><strong>一：装箱</strong></p>
+</blockquote>
+<p>所谓装箱，就是把基本类型转变为对应的对象。装箱分为隐式和显示。</p>
+<p><strong>隐式装箱</strong><br>每当读取一个基本类型的值时，后台会创建一个该基本类型所对应的对象。在这个基本类型上调用方法，其实是在这个基本类型对象上调用方法。这个基本类型的对象是临时的，它只存在于方法调用那一行代码执行的瞬间，执行方法后立刻被销毁。具体到代码如下：</p>
+<pre><code>    num.toFixed(2); // &apos;123.00&apos;
+//上方代码在后台的真正步骤为
+    var c = new Number(123);
+    c.toFixed(2);
+    c = null;
+</code></pre><p>当我们访问 num 时，要从内存中读取这个数字的值，此时访问过程处于读取模式。在读取模式中，后台进行了三步处理：</p>
+<ol>
+<li>创建一个 Number 类型的实例。</li>
+<li>在实例上调用方法。</li>
+<li>销毁实例。 </li>
+</ol>
+<p><strong>显式装箱</strong><br>通过内置对象 Boolean、Object、String 等可以对基本类型进行显示装箱。</p>
+<pre><code>var obj = new String(&apos;123&apos;);
+</code></pre><blockquote>
+<p><strong>二：拆箱</strong></p>
+</blockquote>
+<p>拆箱与装箱相反，把对象转变为基本类型的值。拆箱过程内部调用了抽象操作 ToPrimitive 。该操作接受两个参数，第一个参数是要转变的对象，第二个参数  PreferredType 是对象被期待转成的类型。第二个参数不是必须的，默认该参数为 number，即对象被期待转为数字类型。有些操作如 String(obj) 会传入 PreferredType 参数。有些操作如 obj + “ “ 不会传入 PreferredType。</p>
+<p>具体转换过程是这样的。默认情况下，ToPrimitive 先检查对象是否有 valueOf 方法，如果有则再检查 valueOf 方法是否有基本类型的返回值。如果没有 valueOf 方法或 valueOf 方法没有返回值，则调用 toString 方法。如果 toString 方法也没有返回值，产生 TypeError 错误。</p>
+<p>PreferredType 影响 valueOf 与 toString 的调用顺序。如果 PreferrenType 的值为 string。则先调用 toString ,再调用 valueOf。</p>
+<p>具体测试代码如下：</p>
+<pre><code>var obj = {
+    valueOf : () =&gt; {console.log(&quot;valueOf&quot;); return []},
+    toString : () =&gt; {console.log(&quot;toString&quot;); return []}
+}
+
+String(obj)
+// toString
+// valueOf
+// Uncaught TypeError: Cannot convert object to primitive value
+
+obj+&apos; &apos;
+//valueOf
+//toString
+// Uncaught TypeError: Cannot convert object to primitive value
+
+Number(obj)
+//valueOf
+//toString
+// Uncaught TypeError: Cannot convert object to primitive value
+</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/5816904-0acf1b91d07ebf4d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Gwen Weustink  2016-03-02 09-53-30 .jpg"><br><img src="https://upload-images.jianshu.io/upload_images/5816904-0acf1b91d07ebf4d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Gwen Weustink  2016-03-02 09-53-30 .jpg"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -115,14 +160,9 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/前端/">前端</a>
+  <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
 </div>
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/node/">node</a>
-  </div>
 
 </div>
 
@@ -130,7 +170,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2018/04/22/nodejs单线程异步和事件轮询/" data-title="node单线程异步和事件轮询 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2019/05/13/js基本类型的装箱与拆箱/" data-title="JavaScript基本类型的装箱与拆箱 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -143,19 +183,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/04/29/JavaScript-改变对象属性赋值与取值操作的两种姿势/" title="JavaScript-改变对象属性赋值与取值操作的两种姿势">
-  <strong>上一篇：</strong><br/>
-  <span>
-  JavaScript-改变对象属性赋值与取值操作的两种姿势</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/04/21/js-严格模式下，为什么不能给未声明变量赋值/"  title="js-严格模式下，为什么不能给未声明变量赋值">
+<a href="/2019/05/09/我所理解的类型/"  title="我所理解的类型">
  <strong>下一篇：</strong><br/> 
- <span>js-严格模式下，为什么不能给未声明变量赋值
+ <span>我所理解的类型
 </span>
 </a>
 </div>
