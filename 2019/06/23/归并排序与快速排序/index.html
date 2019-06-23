@@ -4,26 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>完全掌握弹性盒布局（一）属性大扫荡 | CaveShao&#39;s blog</title>
+    <title>归并排序与快速排序 | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="如果一个人要去管理十几个岛屿，对岛屿管理的第一步是了解每一个岛屿的情况，然后才是了解岛屿间的经济来往。知识也是这样，每一个知识点都是一个岛屿，先把每一个点了解透彻，才能灵活地将各个点串联、组合以此实现自己的目的。 弹性盒学习的第一步，就是对与弹性盒有关的每一个属性、每一点进行全面的扫荡。">
-<meta name="keywords" content="Flexbox">
+    <meta name="description" content="快速排序 /*当每次划分为 n-1 个元素和 0 个元素时，最坏情况发生*/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="完全掌握弹性盒布局（一）属性大扫荡">
-<meta property="og:url" content="http://caveshao.com/2017/09/02/完全掌握弹性盒布局（一）属性大扫荡/index.html">
+<meta property="og:title" content="归并排序与快速排序">
+<meta property="og:url" content="http://caveshao.com/2019/06/23/归并排序与快速排序/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="如果一个人要去管理十几个岛屿，对岛屿管理的第一步是了解每一个岛屿的情况，然后才是了解岛屿间的经济来往。知识也是这样，每一个知识点都是一个岛屿，先把每一个点了解透彻，才能灵活地将各个点串联、组合以此实现自己的目的。 弹性盒学习的第一步，就是对与弹性盒有关的每一个属性、每一点进行全面的扫荡。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5816904-00966539464abb41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-02T00:57:21.633Z">
+<meta property="og:description" content="快速排序 /*当每次划分为 n-1 个元素和 0 个元素时，最坏情况发生*/">
+<meta property="og:updated_time" content="2019-06-23T10:38:32.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="完全掌握弹性盒布局（一）属性大扫荡">
-<meta name="twitter:description" content="如果一个人要去管理十几个岛屿，对岛屿管理的第一步是了解每一个岛屿的情况，然后才是了解岛屿间的经济来往。知识也是这样，每一个知识点都是一个岛屿，先把每一个点了解透彻，才能灵活地将各个点串联、组合以此实现自己的目的。 弹性盒学习的第一步，就是对与弹性盒有关的每一个属性、每一点进行全面的扫荡。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/5816904-00966539464abb41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="归并排序与快速排序">
+<meta name="twitter:description" content="快速排序 /*当每次划分为 n-1 个元素和 0 个元素时，最坏情况发生*/">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -83,14 +80,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/09/02/完全掌握弹性盒布局（一）属性大扫荡/" title="完全掌握弹性盒布局（一）属性大扫荡" itemprop="url">完全掌握弹性盒布局（一）属性大扫荡</a>
+      <a href="/2019/06/23/归并排序与快速排序/" title="归并排序与快速排序" itemprop="url">归并排序与快速排序</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2017-09-02T00:44:21.117Z" itemprop="datePublished"> 发表于 2017-09-02</time>
+    <time datetime="2019-06-23T10:36:45.197Z" itemprop="datePublished"> 发表于 2019-06-23</time>
     
   </p>
 </header>
@@ -99,50 +96,100 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-flex-容器和-flex-项目"><span class="toc-number">1.</span> <span class="toc-text">1. flex 容器和 flex 项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-main-axis（主轴）和-cross-axis-交叉轴"><span class="toc-number">2.</span> <span class="toc-text">2. main axis（主轴）和 cross axis (交叉轴)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-容器属性枚举"><span class="toc-number">3.</span> <span class="toc-text">3.容器属性枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-flex-项属性枚举"><span class="toc-number">4.</span> <span class="toc-text">4.flex 项属性枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-属性的应用"><span class="toc-number">5.</span> <span class="toc-text">5.属性的应用</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速排序"><span class="toc-number">1.</span> <span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#归并排序"><span class="toc-number">2.</span> <span class="toc-text">归并排序</span></a></li></ol>
 		
 		</div>
 		
-		<p>如果一个人要去管理十几个岛屿，对岛屿管理的第一步是了解每一个岛屿的情况，然后才是了解岛屿间的经济来往。知识也是这样，每一个知识点都是一个岛屿，先把每一个点了解透彻，才能灵活地将各个点串联、组合以此实现自己的目的。</p>
-<p>弹性盒学习的第一步，就是对与弹性盒有关的每一个属性、每一点进行全面的扫荡。</p>
+		<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p> /<strong><strong><strong>*</strong></strong></strong>当每次划分为 n-1 个元素和 0 个元素时，最坏情况发生<strong><strong>*</strong></strong>/</p>
 <a id="more"></a>
-<h2 id="1-flex-容器和-flex-项目"><a href="#1-flex-容器和-flex-项目" class="headerlink" title="1. flex 容器和 flex 项目"></a>1. flex 容器和 flex 项目</h2><p>flex 项目与 flex 容器的关系通过名称就可以了解，flex 项目是 flex 容器中的元素，一个容器可以包含多个项目。使一个元素变为 flex 容器，只需将该元素的 disply 设为 flex。如果你想将行内元素设置为 flex 容器，可以将元素的 display 设置为 inline-flex。设置了 flex 容器后，容器的子元素会自动成为 flex 项。</p>
-<pre><code>&lt;p&gt;
-  &lt;span&gt;&lt;/span&gt;
-  &lt;span&gt;&lt;/sapn&gt;
-&lt;/p&gt;
+<pre><code> //方法一
+ function quickSort(arr) {
+    if (arr.length &lt;= 1) {
+     return arr
+ }
+ let mid = Math.floor(arr.length / 2)
+ let leftArr = [];
+ let rightArr = [];
+ let midArr = arr.splice(mid, 1);
 
-p {
-    daiplay: flex;
+ for (let i = 0; i &lt; arr.length; i++) {
+
+     if (arr[i] &lt; midArr[0]) {
+         leftArr.push(arr[i])
+     } else {
+         rightArr.push(arr[i])
+     }
+  }
+
+ leftArr = quickSort(leftArr)
+
+ rightArr = quickSort(rightArr)
+
+ return leftArr.concat(midArr, rightArr)
+ }
+// 方法二
+var quickSort = function(arr) {
+ if (arr.length &lt;= 1) { return arr; }
+ var pivotIndex = Math.floor(arr.length / 2);   //基准位置（理论上可任意选取）
+ var pivot = arr.splice(pivotIndex, 1)[0];  //基准数   此处获得基准数并将基准数从数组中去掉
+ var left = [];
+ var right = [];
+ for (var i = 0; i &lt; arr.length; i++){
+     if (arr[i] &lt; pivot) {
+         left.push(arr[i]);
+     } else {
+         right.push(arr[i]);
+     }
+ }
+ return quickSort(left).concat([pivot], quickSort(right));  //链接左数组、基准数构成的数组、右数组
+ }
+
+
+ arr = quickSort(arr)
+</code></pre><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><pre><code>function merge(arr, p, q, r) {
+let leftArr = arr.slice(p, q + 1)
+let rightArr = arr.slice(q + 1, r + 1)
+
+leftArr.push(Number.POSITIVE_INFINITY)
+rightArr.push(Number.POSITIVE_INFINITY)
+let i = 0;
+let j = 0;
+for (let k = p; k &lt;= r; k++) {
+
+    if (leftArr[i] &lt;= rightArr[j]) {
+        arr[k] = leftArr[i]
+        i++
+    } else {
+        arr[k] = rightArr[j]
+        j++
+    }
 }
-</code></pre><p>就像上面第一段代码,设置下方的 CSS 属性后，p 变为 felx 容器，p 内部的两个 span 元素就变为了 flex 项。</p>
-<h2 id="2-main-axis（主轴）和-cross-axis-交叉轴"><a href="#2-main-axis（主轴）和-cross-axis-交叉轴" class="headerlink" title="2. main axis（主轴）和 cross axis (交叉轴)"></a>2. main axis（主轴）和 cross axis (交叉轴)</h2><p><img src="http://upload-images.jianshu.io/upload_images/5816904-00966539464abb41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="flex_terms.png"></p>
-<p>主轴是指沿着 flex 元素放置方向延伸的轴，主轴的开始的位置称为 main start ,主轴的结束的位置成为 main end 。垂直于主轴的是交叉轴，与主轴一样，交叉轴开始的位置称为 cross start ，结束的位置称为 cross end.默认情况下，主轴的方向默认是 row ,即 flex 项沿行由左向右进行排列。主轴的方向可以由容器的 flex-direction 属性改变。</p>
-<pre><code>flex-direction: row | row-reverse | column | column-reverse
-</code></pre><p>row-reverse 指 flex 项由右向左进行排列，main start在为容器的最右边。column 则将主轴方向变为由上到下。</p>
-<h2 id="3-容器属性枚举"><a href="#3-容器属性枚举" class="headerlink" title="3.容器属性枚举"></a>3.容器属性枚举</h2><p>容器的属性上面已经提到了一个 flex-direction。其它的有：flex-wrap、flex-flow、align-items、justify-content、align-content。每一种属性的功能在这里先进行一个简短的概括，具体的使用在以后的章节中进行讨论。</p>
-<blockquote>
+}
+
+function mergeSort(arr, p, r) {
+if (p &lt; r) {
+    let q = Math.floor((p + r) / 2)
+    mergeSort(arr, p, q)
+    mergeSort(arr, q + 1, r)
+    merge(arr, p, q, r)
+}
+}
+mergeSort(arr, 0, arr.length - 1)
+</code></pre><p> 归并排序与快速排序都是分治策略的应用，二者的区别是：<br> 归并排序与快速排序都是分治策略的应用，二者的区别是：</p>
 <ol>
-<li>flex-direction: 指定了内部元素是如何在子元素中布局的，定义了主轴方向。可以接受四个值，在前面已经提到。</li>
-<li>flex-wrap: 指定 flex 项是单行显示还是多行显示，如果指定多行，该属性允许你指定项的堆叠方向（如：由左到右，或由右到左）。它有 no-wrap、wrap、wrap-reverse 三个值。 </li>
-<li>flex-flow: 该属性是 flex-direction 和 flex-flow 属性的缩写。如 flex-flow: row wrap ,相当于 flex-direction: row flex-flow:wrap</li>
-<li>align-items: 定义 flex 项在交叉轴上的对齐。取值有 flex-start、flex-end、center、baseline、stretch ，默认为 stretch。</li>
-<li>justify-content: 定义 flex 项在主轴上的对齐。取值有 flex-start(默认)、flex-end、center、space-between、sapce-end。</li>
-<li>align-content: 定义了多根轴线的对齐方式，该属性对单行弹性盒子无效。取值：flex-start | flex-end | center | space-between | space-around | space-evenly | stretch</li>
+<li>快速排序生成新的数组而归并排序是在原有数组上更改</li>
+<li>二者时间复杂度不相同，快速排序最坏情况是 O(n^2)</li>
+<li>二者区别的根本原因是快速排序的划分是不稳定的，有可能划分为 n-1 个元素的子数组和 0 个元素的子数组</li>
 </ol>
-</blockquote>
-<h2 id="4-flex-项属性枚举"><a href="#4-flex-项属性枚举" class="headerlink" title="4.flex 项属性枚举"></a>4.flex 项属性枚举</h2><p>flex 项同样有六个属性：order | flex-grow | flex-shrink | flex-basis | flex | align-self</p>
-<blockquote>
+<p>平均情况下快速排序的时间复杂度是 Θ(nlgn)，最坏情况是 Θ(n2) :</p>
 <ol>
-<li>order: 定义 flex 项的排列顺序，它的值是一个整数。由小到大，值越大排列越靠后。</li>
-<li>flex-grow: 定义项目如何放大，默认为零，为零时不放大。</li>
-<li>flex-shrink: 指定了从每个 flex 项中取出多少溢出量，以阻止它们溢出它们的容器。即指定元素的收缩规则（仅在默认宽度大于容器宽度时有效）</li>
-<li>flex-basis: 指定了 flex 项在容器中初始小。</li>
-<li>flex 是前面三个属性的缩写，即 flex: flex-grow flex-shrink flex-basis。</li>
-<li>align-self: 指定一个或多个 flex 项的对齐方式，覆盖 align-items 指定的对齐方式。取值有 auto | flex-start | flex-end | center | baseline | stretch</li>
+<li><p>当划分产生的两个子问题分别包含 n-1 和 0 个元素时，最坏情况发生。<br>划分操作的时间复杂度为 Θ(n)，T(0)=Θ(1)<br>算法运行时间的递归式为 T(n)=T(n−1)+T(0)+Θ(n)=T(n−1)+Θ(n)<br>解为 T(n)=Θ(n2)</p>
+</li>
+<li><p>当划分产生的两个子问题分别包含 ⌊n/2⌋ 和 ⌈n/2⌉−1 个元素时，最好情况发生。<br>算法运行时间递归式为 T(n)=2T(n/2)+Θ(n)<br>解为 T(n)=Θ(nlgn)</p>
+</li>
+<li><p>事实上只要划分是常数比例的，算法的运行时间总是O(nlgn)。 假设按照 9:1 划分，每层代价最多为 cn，递归深度为 log9n/10=Θ(lgn)，故排序的总代价为 O(nlgn)<br>平均情况下，比如一次坏的划分接着一次好的划分，坏的划分那一项可以合并到好的划分里，统计上来讲平均情况下的时间复杂度仍然是Θ(nlgn)</p>
+</li>
 </ol>
-</blockquote>
-<h2 id="5-属性的应用"><a href="#5-属性的应用" class="headerlink" title="5.属性的应用"></a>5.属性的应用</h2><p>弹性盒允许嵌套，即一个弹性盒内部也可以有一个或多个弹性盒，这样就能灵活实现各种各样的布局。属性的应用就像卡牌游戏，面对不同的情况挑选不同的卡牌并按不同的顺序进行组合，y以此更好的达到自己的目的。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -150,14 +197,9 @@ p {
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/前端/">前端</a>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
 </div>
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Flexbox/">Flexbox</a>
-  </div>
 
 </div>
 
@@ -165,7 +207,7 @@ p {
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2017/09/02/完全掌握弹性盒布局（一）属性大扫荡/" data-title="完全掌握弹性盒布局（一）属性大扫荡 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2019/06/23/归并排序与快速排序/" data-title="归并排序与快速排序 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -178,19 +220,11 @@ p {
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/09/10/夜黑风高，小心闭包-Oh My Closures/" title="夜黑风高，小心闭包-Oh My Closures">
-  <strong>上一篇：</strong><br/>
-  <span>
-  夜黑风高，小心闭包-Oh My Closures</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/07/09/先到为君，后到为臣/"  title="先到为君，后到为臣">
+<a href="/2019/05/14/一篇文章掌握js DOM事件/"  title="一篇文章掌握 JavaScript DOM 事件">
  <strong>下一篇：</strong><br/> 
- <span>先到为君，后到为臣
+ <span>一篇文章掌握 JavaScript DOM 事件
 </span>
 </a>
 </div>
@@ -205,7 +239,7 @@ p {
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-flex-容器和-flex-项目"><span class="toc-number">1.</span> <span class="toc-text">1. flex 容器和 flex 项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-main-axis（主轴）和-cross-axis-交叉轴"><span class="toc-number">2.</span> <span class="toc-text">2. main axis（主轴）和 cross axis (交叉轴)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-容器属性枚举"><span class="toc-number">3.</span> <span class="toc-text">3.容器属性枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-flex-项属性枚举"><span class="toc-number">4.</span> <span class="toc-text">4.flex 项属性枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-属性的应用"><span class="toc-number">5.</span> <span class="toc-text">5.属性的应用</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速排序"><span class="toc-number">1.</span> <span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#归并排序"><span class="toc-number">2.</span> <span class="toc-text">归并排序</span></a></li></ol>
  
   </div>
 
