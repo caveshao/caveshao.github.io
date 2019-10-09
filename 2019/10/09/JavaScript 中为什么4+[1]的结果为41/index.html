@@ -4,23 +4,25 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>先到为君，后到为臣 | CaveShao&#39;s blog</title>
+    <title>JavaScript 中为什么 4 + [1] 的结果为 41 | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="前端成长记录 个人生活感悟 html CSS javascript">
+    <meta name="description" content="本文中的简单基本类型指的是除了 object 的基本类型  对于这个问题，首先我们需要知道，在 JavaScript 中对两个操作数进行加法操作会发生什么。 总的来说有以下几种情况：  当加号两边都是非字符串以及非对象的操作数时，进行数字相加。比如 true + null === 1。 当加号两边有一方或两方都是字符串时，执行字符串的连接。比如 1 + “2” === “12”。 当加号两边有一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="先到为君，后到为臣">
-<meta property="og:url" content="http://caveshao.com/2017/07/09/先到为君，后到为臣/index.html">
+<meta property="og:title" content="JavaScript 中为什么 4 + [1] 的结果为 41">
+<meta property="og:url" content="http://caveshao.com/2019/10/09/JavaScript 中为什么4+[1]的结果为41/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="前端成长记录 个人生活感悟 html CSS javascript">
-<meta property="og:updated_time" content="2017-07-09T08:43:43.703Z">
+<meta property="og:description" content="本文中的简单基本类型指的是除了 object 的基本类型  对于这个问题，首先我们需要知道，在 JavaScript 中对两个操作数进行加法操作会发生什么。 总的来说有以下几种情况：  当加号两边都是非字符串以及非对象的操作数时，进行数字相加。比如 true + null === 1。 当加号两边有一方或两方都是字符串时，执行字符串的连接。比如 1 + “2” === “12”。 当加号两边有一">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-dd8952af858508cf.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-09T14:36:09.487Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="先到为君，后到为臣">
-<meta name="twitter:description" content="前端成长记录 个人生活感悟 html CSS javascript">
+<meta name="twitter:title" content="JavaScript 中为什么 4 + [1] 的结果为 41">
+<meta name="twitter:description" content="本文中的简单基本类型指的是除了 object 的基本类型  对于这个问题，首先我们需要知道，在 JavaScript 中对两个操作数进行加法操作会发生什么。 总的来说有以下几种情况：  当加号两边都是非字符串以及非对象的操作数时，进行数字相加。比如 true + null === 1。 当加号两边有一方或两方都是字符串时，执行字符串的连接。比如 1 + “2” === “12”。 当加号两边有一">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-dd8952af858508cf.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -80,14 +82,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/07/09/先到为君，后到为臣/" title="先到为君，后到为臣" itemprop="url">先到为君，后到为臣</a>
+      <a href="/2019/10/09/JavaScript 中为什么4+[1]的结果为41/" title="JavaScript 中为什么 4 + [1] 的结果为 41" itemprop="url">JavaScript 中为什么 4 + [1] 的结果为 41</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2017-07-09T08:43:43.000Z" itemprop="datePublished"> 发表于 2017-07-09</time>
+    <time datetime="2019-10-09T14:33:55.516Z" itemprop="datePublished"> 发表于 2019-10-09</time>
     
   </p>
 </header>
@@ -100,10 +102,38 @@
 		
 		</div>
 		
-		  
+		<blockquote>
+<p>本文中的简单基本类型指的是除了 object 的基本类型</p>
+</blockquote>
+<p>对于这个问题，首先我们需要知道，在 JavaScript 中对两个操作数进行加法操作会发生什么。</p>
+<p>总的来说有以下几种情况：</p>
+<ol>
+<li>当加号两边都是非字符串以及非对象的操作数时，进行数字相加。比如 true + null === 1。</li>
+<li>当加号两边有一方或两方都是字符串时，执行字符串的连接。比如 1 + “2” === “12”。</li>
+<li>当加号两边有一方或两方为对象时，先对对象进行拆箱操作，然后用拆箱后得到的简单基本类型作为操作数。</li>
+</ol>
+<a id="more"></a>
+<p>标题中的表达式其实是对于第三条规则的应用，当执行代码 4 + [1] 时，会先对 [1] 进行拆箱操作。这个拆箱操作就是调用 [1] 的隐藏函数 [[ToPrimitive]] ，然后得到简单基本类型。</p>
+<p>数组的 ToPrimitive 函数执行时会先调用对象的 valueOf 方法，如果没有得到简单基本类型再调用对象的 toString 方法。</p>
+<p>我们可以直接使用 [1].valueOf() 和 [1].toString() 查看结果。最终我们发现 valueOf 的结果是一个数组，toString 的结果是一个字符串 “1”。所以 [1] 拆箱的最终结果是 “1”。</p>
+<p>标题中的 4 + [1] 相当于 4 + “1” ，结果为 “41”。</p>
+<p>其实在这个问题中，我们还可以知道为什么没有元素或有一个元素的数组可以转换为数字。</p>
+<ul>
+<li>Number([]) : 空数组拆箱后得到空字符串，空字符串可以转换为数字 0。</li>
+<li>Number([1]): 数组拆箱后得到字符串 “1”，这个字符串转换为数字为 1。</li>
+<li>Number([1,2]): 数组拆箱后得到字符串 “1,2” ，Number(“1,2”) 结果为 NaN。</li>
+</ul>
+<p>Number 用来执行类型转换，也可以用 +”string” 的方法来执行转换。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5816904-dd8952af858508cf.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Goran Ivos  2017-04-25 07-26-20 .jpg"></p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+</div>
 
 
 </div>
@@ -112,7 +142,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2017/07/09/先到为君，后到为臣/" data-title="先到为君，后到为臣 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2019/10/09/JavaScript 中为什么4+[1]的结果为41/" data-title="JavaScript 中为什么 4 + [1] 的结果为 41 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -125,14 +155,14 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/09/02/完全掌握弹性盒布局（一）属性大扫荡/" title="完全掌握弹性盒布局（一）属性大扫荡">
-  <strong>上一篇：</strong><br/>
-  <span>
-  完全掌握弹性盒布局（一）属性大扫荡</span>
+
+<div class="next">
+<a href="/2019/06/23/归并排序与快速排序/"  title="归并排序与快速排序">
+ <strong>下一篇：</strong><br/> 
+ <span>归并排序与快速排序
+</span>
 </a>
 </div>
-
 
 </nav>
 
