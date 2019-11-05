@@ -95,48 +95,11 @@
     <div class="article-content">
         
         <h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>浏览器和 Node 都有事件轮询的机制，虽然都属于 JavaScript，但二者的内部机制完全不同。</p>
-<p>以下面这段代码为例</p>
-<pre><code>setTimeout(()=&gt;{
-console.log(&apos;timer1&apos;)
-
-Promise.resolve().then(function() {
-    console.log(&apos;promise1&apos;)
-})
-}, 0)
-
-  setTimeout(()=&gt;{
-console.log(&apos;timer2&apos;)
-
-Promise.resolve().then(function() {
-    console.log(&apos;promise2&apos;)
-})
-}, 0)
-
-Promise.resolve().then(function() {
-    console.log(&apos;promise3&apos;)
-})
-</code></pre><p>在浏览器中它的输出顺序是 promise3=&gt;timer1=&gt;promise1=&gt;timer2=&gt;promise2。<br>而在 Node 中它的输出顺序变为了 promise3=&gt;timer1=&gt;timer2=&gt;promise1=&gt;promise2。</p>
-<h3 id="宏任务的分类与微任务何时执行"><a href="#宏任务的分类与微任务何时执行" class="headerlink" title="宏任务的分类与微任务何时执行"></a>宏任务的分类与微任务何时执行</h3><p>接下来我们先说明两个概念——宏任务与微任务：</p>
-<ul>
-<li>macrotask：包含执行整体的js代码，事件回调，XHR回调，定时器（setTimeout/setInterval/setImmediate），IO操作，UI render</li>
-<li>microtask：更新应用程序状态的任务，包括promise回调，MutationObserver，process.nextTick，Object.observe</li>
-</ul>
-<p>浏览器与 Node 事件轮询的不同点就在于宏任务是否归类与微任务何时执行。</p>
-<p>在浏览器中，<strong>宏任务会按照事件队列中的顺序依次执行</strong>，宏任务有可能产生微任务，<strong>微任务队列会在当前宏任务执行结束后立即执行</strong>。</p>
-<p>在 Node 中，将宏任务分为六种，如果加上整体的 js 代码一共有七种。具体如下：<br><img src="https://upload-images.jianshu.io/upload_images/5816904-70156ea9e189339f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
-<blockquote>
-<p> timers 阶段：这个阶段执行timer（setTimeout、setInterval）的回调<br>     I/O callbacks 阶段：执行一些系统调用错误，比如网络通信的错误回调<br>     idle, prepare 阶段：仅node内部使用<br>     poll 阶段：获取新的I/O事件, 适当的条件下node将阻塞在这里<br>     check 阶段：执行 setImmediate() 的回调<br>     close callbacks 阶段：执行 socket 的 close 事件回调</p>
-</blockquote>
-<p>在 Node 中 js 整体代码执行结束后，会将相应的宏任务放到相应的阶段，然后<strong>从 timer 阶段开始不断循环执行</strong>。每个阶段产生的宏任务会放到其应该属于的阶段，产生的<strong>微任务队列会在当前阶段执行结束后立即执行</strong>。</p>
-<h3 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h3><p>下面我们来逐步分析两个环境的输出为什么不同。</p>
-<p>首先可以确定一点，整体 js 代码会先执行，并且从上到下同步执行一遍。在执行的过程中，会碰到异步的代码，即 Promise.then 和 setTimeout ，这两个函数内部的回调函数都不会在这个同步过程中执行。</p>
-<p>整体的 js 代码执行后产生了一个微任务 （promise3） 和两个宏任务（timer1、timer2）。</p>
-<p>在浏览器中会先执行 promise3 再执行 timer1，执行 timer1 后产生的 promise1 会紧接着 timer1 执行，最后是 timer2 与 promise2。</p>
-<p>在 Node 中同样会先执行 promise3 再执行 timer1，但是 timer1 之后会接着执行 timer2，因为这是在 timer 阶段。在 timer1 与 timer2 中产生的两个微任务会在 timer 阶段结束后依次执行。</p>
-
         
         
         <p class="article-more-link">
+          
+            <a href="/2019/11/05/浅谈node与浏览器中的eventloop/#more">Read More</a>
           
        </p>
     </div>
@@ -803,7 +766,11 @@ Promise.resolve().then(function() {
 			
 		
 			
-				<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>1</sup></a></li>
+				<li><a href="/tags/vue/" title="vue">vue<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>1</sup></a></li>
 			
 		
 			
@@ -815,15 +782,11 @@ Promise.resolve().then(function() {
 			
 		
 			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/vue/" title="vue">vue<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/node/" title="node">node<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>1</sup></a></li>
 			
 		
 			
@@ -843,11 +806,11 @@ Promise.resolve().then(function() {
 			
 		
 			
-				<li><a href="/tags/http/" title="http">http<sup>1</sup></a></li>
+				<li><a href="/tags/浏览器兼容/" title="浏览器兼容">浏览器兼容<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/浏览器兼容/" title="浏览器兼容">浏览器兼容<sup>1</sup></a></li>
+				<li><a href="/tags/http/" title="http">http<sup>1</sup></a></li>
 			
 		
 			
