@@ -4,25 +4,25 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>我所理解的类型 | CaveShao&#39;s blog</title>
+    <title>前端框架响应式简单实现 | CaveShao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="caveshao">
     
 
     
-    <meta name="description" content="1.七种语言类型 js 中有七种语言类型，分别是 Undefined、Null、Number、String、Boolean、Symbol、Object。这七种类型可以分为两类，简单数据类型（基本数据类型）和复杂数据类型。Object 是复杂数据类型，其余六种类型为简单数据类型。">
+    <meta name="description" content="// 只有先执行了依赖收集，才能在属性更新的时候派发更新">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我所理解的类型">
-<meta property="og:url" content="http://caveshao.com/2019/05/09/我所理解的类型/index.html">
+<meta property="og:title" content="前端框架响应式简单实现">
+<meta property="og:url" content="http://caveshao.com/2019/11/05/前端框架响应式简单实现及代码分析/index.html">
 <meta property="og:site_name" content="CaveShao&#39;s blog">
-<meta property="og:description" content="1.七种语言类型 js 中有七种语言类型，分别是 Undefined、Null、Number、String、Boolean、Symbol、Object。这七种类型可以分为两类，简单数据类型（基本数据类型）和复杂数据类型。Object 是复杂数据类型，其余六种类型为简单数据类型。">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-f248fb305f5b24eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-05-09T12:44:35.643Z">
+<meta property="og:description" content="// 只有先执行了依赖收集，才能在属性更新的时候派发更新">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5816904-f9975590b71af1e5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-11-05T15:47:33.844Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我所理解的类型">
-<meta name="twitter:description" content="1.七种语言类型 js 中有七种语言类型，分别是 Undefined、Null、Number、String、Boolean、Symbol、Object。这七种类型可以分为两类，简单数据类型（基本数据类型）和复杂数据类型。Object 是复杂数据类型，其余六种类型为简单数据类型。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-f248fb305f5b24eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="前端框架响应式简单实现">
+<meta name="twitter:description" content="// 只有先执行了依赖收集，才能在属性更新的时候派发更新">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5816904-f9975590b71af1e5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
     
     <link rel="alternative" href="/atom.xml" title="CaveShao&#39;s blog" type="application/atom+xml">
@@ -82,14 +82,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2019/05/09/我所理解的类型/" title="我所理解的类型" itemprop="url">我所理解的类型</a>
+      <a href="/2019/11/05/前端框架响应式简单实现及代码分析/" title="前端框架响应式简单实现" itemprop="url">前端框架响应式简单实现</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="caveshao" target="_blank" itemprop="author">caveshao</a>
 		
   <p class="article-time">
-    <time datetime="2019-05-09T12:42:58.689Z" itemprop="datePublished"> 发表于 2019-05-09</time>
+    <time datetime="2019-11-05T15:42:27.793Z" itemprop="datePublished"> 发表于 2019-11-05</time>
     
   </p>
 </header>
@@ -102,22 +102,108 @@
 		
 		</div>
 		
-		<p> <strong>1.七种语言类型</strong></p>
-<p>js 中有七种语言类型，分别是 Undefined、Null、Number、String、Boolean、Symbol、Object。这七种类型可以分为两类，简单数据类型（基本数据类型）和复杂数据类型。Object 是复杂数据类型，其余六种类型为简单数据类型。</p>
+		<p>// 只有先执行了依赖收集，才能在属性更新的时候派发更新</p>
 <a id="more"></a>
-<p><strong>2.Object 类型的子类型</strong></p>
-<p>js 中还有一些类型归属于 Object 类型，它们可以称为 Object 的子类型，比如 Object、Function、Number、String、Array、Boolean、Regexp、Date、Error。</p>
-<p>之所以称这些类型为「Object 的子类型」，是因为与这些类型对应的实例是具有属性和方法的对象。</p>
-<p>比如 typeof new String()，得到的结果是 object。再比如对 new Number() 或 new Function() 产生的对象使用 Object.prototype.toString.call(产生的对象) 方法，得到的结果分别是 [object Array] 和 [object Function]。</p>
-<p><strong>3. 内建函数与内置对象</strong></p>
-<p>Array 是 js 中的内建函数（或原生函数），使用 Array() 可以构造 Array 类型的实例。同样，对象的每一种子类型都有自己的内建函数，使用 new 都可以产生自己的实例（ps：Symbol 类型行为不同）。</p>
-<p>js 中的内置对象与内建函数是同一种东西。这个可以验证，利用Object. prototype.<br>toString.call()，测得 Object、Array 等的结果都是 [object Function]。</p>
-<p>至于对象子类型间的继承关系，这涉及到原型链的知识，我会在另一篇文章中讨论。</p>
-<hr>
-<p><strong>知识理解的不同</strong></p>
-<p>在《JavaScript高级程序设计》中将 Object 的子类型定义为引用类型，有人也将这些类型叫做运行时类型。在我看来这些不同的名称源于不同的理解方式。</p>
-<p>其实同一种知识，不同的人理解起来常常有一些不同。这些不同有时候并没有对错之分，只是知识的不同角度的诠释。就像同一片星空，在每个人的眼中却是不同的景色。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5816904-f248fb305f5b24eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="James Harris  2017-01-20 08-48-05 .jpg"></p>
+<pre><code>// 只有先执行了依赖收集，才能在属性更新的时候派发更新
+
+class Dep {
+constructor() {
+    this.subs = []
+}
+//添加依赖
+addSub(sub) {
+    this.subs.push(sub)
+}
+//更新 
+notify() {
+    this.subs.forEach(sub=&gt;{
+        sub.update()
+    })
+}
+}
+
+Dep.target = null
+
+//当需要依赖收集的时候调用 addSub，当需要派发更新的时候调用 notify
+
+//在组件挂载时会先对所有需要的属性调用 Object.defineProperty()
+//然后实例化 Watcher，传入组件更新的回调
+//在实例化的过程中会对模板的属性进行求值，触发依赖收集
+
+class Watcher {
+constructor(obj,key,cb) {
+    // 将 Dep.target 指向自己
+    // 然后触发属性的 getter 添加监听
+    //最后将 Dep.target 置空
+    Dep.target = this
+    this.cb = cb
+    this.obj = obj 
+    this.key = key
+    this.value = obj[key] //此处触发属性的 getter
+    Dep.target = null
+}
+
+update() {
+    //获取新值
+    this.value = this.obj[this.key]
+    //调用 update 更新 Dom
+    this.cb(this.value)
+}
+}
+
+//在执行构造函数时将 Dep.target 指向自身，
+//从而收集到对应的 Watcher，在派发    更新的时候取出对应的 Watcher，然后执行 update 函数
+
+
+function observe(obj) {
+if(!obj || typeof obj !== &apos;object&apos;){
+    return
+}
+
+for(let key in obj) {
+    defineReactive(obj,key,obj[key])
+}
+}
+
+function defineReactive(obj,key,value) {
+observe(value)
+
+let dp = new Dep()
+Object.defineProperty(obj,key,{
+    enumerable:true,
+    cinfigurable:true,
+    get:function() {
+        if(Dep.target) {
+            dp.addSub(Dep.target)
+        }
+        return value
+    },
+    set:function(newValue) {
+        value = newValue
+        dp.notify()
+    }
+})
+}
+</code></pre><hr>
+<pre><code>let obj = {a:1}
+
+
+observe(obj)
+
+new Watcher(obj,&apos;a&apos;,function(v) {
+//document.querySelector().innerText = v //更新 DOM
+console.log(&quot;改变DOM&quot;)
+})
+
+obj.a = 3 //改变 DOM
+</code></pre><p>我将最后一小段代码与上面分开，因为具体过程用最后一小段代码就可以逐步深入的分析。</p>
+<p>首先是声明一个对象，这无需多说。</p>
+<p>接着，调用 observe 方法，将 obj 作为参数传入。observe 首先判断 obj 是不是对象，遍历对象的键。然后通过 defineReactive 函数为每个对象的属性添加属性描述符，重点是改变每个属性的 getter 和 setter 行为。具体改变了什么行为我们下面再说。</p>
+<p>接下来，新建一个 Watcher 对象，参数是对象、属性以及回调函数。这一部分较难理解。需要结合整体来看。新建 Watcher 对象时，首先调用 Watcher 类中的 constructor。其中先设置 Dep.target 为 this，接着代码中的 obj[key] 触发了 key 的 getter 行为。</p>
+<p>在属性的 get 方法中，先检测 Dep.target 有没有值，如果有就通过 Dep 实例的 addSub 添加到实例的数组中，这一步叫做依赖收集。如果声明了多个 Watcher，它们都会被添加到这个实例的数组中，形成一个 Watcher 数组。</p>
+<p>我们回到 Watcher 对象，这个对象还有一个 update 方法，调用回调函数并将 obj[key] 这个值传入。</p>
+<p>最后对 obj.a 进行赋值时，会调用属性的 set 方法，在 set 后的函数中， Dep 实例的 notify 方法调用了 subs 数组中每个 Watcher 的 update 方法，而 update 方法会调用声明 Watcher 时传入的回调，回调中会进行 DOM 节点的更新。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5816904-f9975590b71af1e5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="NASA  2015-11-06 10-26-56 .jpg"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -125,7 +211,7 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  <a class="article-category-link" href="/categories/机制/">机制</a>
 </div>
 
 
@@ -135,7 +221,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://caveshao.com/2019/05/09/我所理解的类型/" data-title="我所理解的类型 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
+	  <div data-url="http://caveshao.com/2019/11/05/前端框架响应式简单实现及代码分析/" data-title="前端框架响应式简单实现 | CaveShao&#39;s blog" data-tsina="6232806586" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -149,18 +235,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2019/05/13/js基本类型的装箱与拆箱/" title="JavaScript基本类型的装箱与拆箱">
+ <a href="/2019/11/05/浅谈浏览器-eventloop-与-Nodejs-eventloop-的不同点/" title="不同的eventloop">
   <strong>上一篇：</strong><br/>
   <span>
-  JavaScript基本类型的装箱与拆箱</span>
+  不同的eventloop</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2019/04/20/JS数组平铺三种姿势/"  title="JS 数组平铺三种姿势">
+<a href="/2019/10/09/JavaScript 中为什么4+[1]的结果为41/"  title="JavaScript 中为什么 4 + [1] 的结果为 41">
  <strong>下一篇：</strong><br/> 
- <span>JS 数组平铺三种姿势
+ <span>JavaScript 中为什么 4 + [1] 的结果为 41
 </span>
 </a>
 </div>
