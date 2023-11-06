@@ -132,7 +132,7 @@ Promise.resolve().then(function() {
 </ul>
 <p>浏览器与 Node 事件轮询的不同点就在于宏任务是否归类与微任务何时执行。</p>
 <p>在浏览器中，<strong>宏任务会按照事件队列中的顺序依次执行</strong>，宏任务有可能产生微任务，<strong>微任务队列会在当前宏任务执行结束后立即执行</strong>。</p>
-<p>在 Node 中，将宏任务分为六种，如果加上整体的 js 代码一共有七种。具体如下：<br><img src="https://upload-images.jianshu.io/upload_images/5816904-70156ea9e189339f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>在 Node 中，将宏任务分为六种，如果加上整体的 js 代码一共有七种。具体如下：<br><img src="https://upload-images.jianshu.io/upload_images/5816904-70156ea9e189339f.png" alt="图片.png"></p>
 <blockquote>
 <p> timers 阶段：这个阶段执行timer（setTimeout、setInterval）的回调<br>    I/O callbacks 阶段：执行一些系统调用错误，比如网络通信的错误回调<br>    idle, prepare 阶段：仅node内部使用<br>    poll 阶段：获取新的I/O事件, 适当的条件下node将阻塞在这里<br>    check 阶段：执行 setImmediate() 的回调<br>    close callbacks 阶段：执行 socket 的 close 事件回调</p>
 </blockquote>
